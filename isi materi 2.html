@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Belajar - Dampak Sosial</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            width: 100%;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- KOTAK BACAAN --- */
+        .content-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 800px;
+            margin-top: 30px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.8s ease;
+            color: #333;
+        }
+
+        /* Header Materi */
+        .materi-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-badge {
+            background: #e3f2fd;
+            color: #090979;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin-top: 10px;
+            color: #090979;
+            font-size: 1.8rem; /* Ukuran disesuaikan agar tidak terlalu besar */
+            line-height: 1.3;
+        }
+
+        /* Gambar Ilustrasi */
+        .materi-image {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-weight: 600;
+            overflow: hidden;
+        }
+
+        .materi-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- STYLE ISI MATERI (Typography) --- */
+        .materi-body {
+            color: #444;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Judul Sub-Bab (A, B, C, D) */
+        .materi-body h3 {
+            color: #090979;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-left: 4px solid #00d4ff;
+            padding-left: 10px;
+        }
+
+        .materi-body p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* List Angka & Bullet */
+        .materi-body ol, .materi-body ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
+
+        .materi-body li {
+            margin-bottom: 10px;
+        }
+
+        /* Sub-list (Bullet di dalam Angka) */
+        .materi-body li ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .materi-body strong {
+            color: #000;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #e8f5e9; /* Hijau muda */
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: #2e7d32;
+        }
+
+        /* --- TOMBOL NAVIGASI --- */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-prev {
+            background: white;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        .btn-prev:hover { background: #f0f0f0; color: #333; }
+
+        .btn-next {
+            background: #090979;
+            color: white;
+            box-shadow: 0 4px 15px rgba(9, 9, 121, 0.3);
+        }
+        .btn-next:hover {
+            background: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsif HP */
+        @media (max-width: 600px) {
+            .content-container { padding: 25px; width: 95%; }
+            h1 { font-size: 1.4rem; }
+            .materi-image { height: 180px; }
+            .nav-buttons { flex-direction: column-reverse; gap: 10px; }
+            .btn { width: 100%; justify-content: center; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">E-Learning SMK</a>
+    </nav>
+
+    <div class="content-container">
+        
+        <div class="materi-header">
+            <span class="category-badge">Pertemuan 2</span>
+            <h1>Dampak Sosial Teknologi dalam Kehidupan Sehari-hari (Fokus: Remaja/Gen Z)</h1>
+        </div>
+
+        <div class="materi-image">
+            <span>[ Ilustrasi Remaja & Gadget ]</span>
+        </div>
+
+        <div class="materi-body">
+            
+            <h3>A. Pendahuluan</h3>
+            <p>
+                Perkembangan teknologi informasi membawa perubahan besar terhadap pola interaksi sosial masyarakat, khususnya remaja yang termasuk dalam generasi Z. 
+                Pada bagian ini, peserta didik akan mempelajari bagaimana penggunaan teknologi, khususnya gadget dan media digital, dapat memengaruhi perilaku, hubungan sosial, serta gaya hidup sehari-hari.
+            </p>
+
+            <h3>B. Dampak Sosial Positif Teknologi</h3>
+            <ol>
+                <li><strong>Mempermudah Komunikasi:</strong> Teknologi memungkinkan individu berkomunikasi secara cepat melalui pesan singkat, panggilan video, serta berbagai aplikasi percakapan. Hal ini mendukung kerja sama, koordinasi, serta hubungan dengan teman maupun keluarga yang berada di lokasi berbeda.</li>
+                <li><strong>Memperluas Jejaring Sosial:</strong> Media digital membantu remaja terhubung dalam komunitas berdasarkan minat, seperti musik, desain, pemrograman, atau game. Jejaring ini dapat memberikan kesempatan belajar, kolaborasi, dan berbagi pengalaman.</li>
+                <li><strong>Mendukung Kolaborasi dan Produktivitas:</strong> Aplikasi seperti Google Workspace, Canva, atau platform pembelajaran daring memudahkan siswa mengerjakan tugas atau proyek secara bersama-sama. Pengelolaan pekerjaan juga menjadi lebih efisien karena dokumen dapat diakses kapan saja.</li>
+                <li><strong>Menjadi Ruang Ekspresi Diri:</strong> Teknologi memungkinkan remaja mengekspresikan ide, kreativitas, dan identitas diri melalui foto, video, karya digital, atau tulisan. Hal ini dapat meningkatkan rasa percaya diri dan kemampuan berkarya.</li>
+            </ol>
+
+            <div class="highlight-box">
+                💡 <strong>Tips Digital:</strong> Gunakan teknologi sebagai alat untuk berkarya, bukan hanya sekadar alat untuk melihat karya orang lain.
+            </div>
+
+            <h3>C. Dampak Sosial Negatif Teknologi pada Remaja (Gen Z)</h3>
+            <ol>
+                <li><strong>Kecanduan Gadget:</strong> Penggunaan gadget tanpa kontrol dapat menyebabkan individu terus-menerus memeriksa ponsel, sulit berkonsentrasi, dan mengabaikan tugas penting. Kecanduan ini berdampak pada:
+                    <ul>
+                        <li>Penurunan fokus belajar</li>
+                        <li>Kurang tidur</li>
+                        <li>Penurunan kedisiplinan</li>
+                    </ul>
+                </li>
+                <li><strong>Menurunnya Interaksi Sosial Langsung:</strong> Remaja cenderung lebih nyaman berkomunikasi melalui pesan digital daripada tatap muka. Akibatnya:
+                    <ul>
+                        <li>Kemampuan komunikasi interpersonal menurun</li>
+                        <li>Interaksi dengan keluarga berkurang</li>
+                        <li>Hubungan sosial menjadi lebih dangkal</li>
+                    </ul>
+                </li>
+                <li><strong>Fenomena FOMO (Fear of Missing Out) dan Perbandingan Sosial:</strong> Media sosial sering menampilkan pencapaian atau kehidupan terbaik seseorang. Melihat hal tersebut secara terus-menerus dapat menimbulkan perasaan kurang percaya diri, kecemasan sosial, dan dorongan untuk selalu “ikut tren”.</li>
+                <li><strong>Potensi Cyberbullying:</strong> Komentar negatif, penyebaran foto tanpa izin, atau penghinaan daring dapat terjadi dengan mudah. Cyberbullying memberikan dampak signifikan terhadap kondisi psikologis remaja.</li>
+                <li><strong>Penyalahgunaan Data dan Privasi:</strong> Kurangnya pengetahuan tentang keamanan digital membuat remaja rentan terhadap kebocoran data, penipuan daring (phishing), dan akses ilegal terhadap akun pribadi.</li>
+            </ol>
+
+            <h3>D. Gambaran Situasi Nyata dalam Kehidupan Remaja</h3>
+            <ol>
+                <li><strong>Di lingkungan sekolah:</strong> Siswa cenderung lebih fokus pada layar ponsel saat jam istirahat. Sehingga diskusi kelompok terhambat karena perhatian terpecah oleh notifikasi.</li>
+                <li><strong>Di lingkungan rumah:</strong> Aktivitas makan sering disertai penggunaan HP. Remaja mengecek ponsel segera setelah bangun tidur. Waktu malam banyak dihabiskan untuk scroll media sosial.</li>
+                <li><strong>Dalam proses belajar:</strong> Penggunaan gadget untuk belajar sering beralih menjadi hiburan. Konsentrasi cepat terganggu oleh notifikasi.</li>
+            </ol>
+
+        </div>
+
+        <div class="nav-buttons">
+            <a href="materi.html" class="btn btn-prev">← Kembali</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

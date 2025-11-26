@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Evaluasi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: white; text-decoration: none; }
+
+        /* --- CONTAINER QUIZ --- */
+        .quiz-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        h2 { text-align: center; margin-bottom: 20px; font-weight: 700; }
+        p.sub-title { text-align: center; margin-bottom: 40px; color: #e0e0e0; font-size: 0.9rem; }
+
+        /* --- KARTU SOAL --- */
+        .question-card {
+            background: white;
+            color: #333;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Desain Pilihan Ganda (Radio) */
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option-label:hover {
+            background-color: #f0f8ff;
+            border-color: #090979;
+        }
+
+        input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        /* --- TOMBOL SUBMIT --- */
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+        }
+
+        /* --- POPUP HASIL (MODAL) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-box {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            animation: popUp 0.4s ease;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 15px 0;
+            color: #090979;
+        }
+
+        .result-message { margin-bottom: 20px; font-size: 1rem; color: #555; }
+        
+        .modal-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            color: white;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-success { background: #00c853; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4); }
+        .btn-fail { background: #d50000; box-shadow: 0 4px 10px rgba(213, 0, 0, 0.4); }
+
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">E-Learning SMK</a>
+    </nav>
+
+    <div class="quiz-container">
+        <h2>Evaluasi Pembelajaran</h2>
+        <p class="sub-title">Jawablah 10 pertanyaan berikut. KKM: 70</p>
+
+        <form id="quizForm">
+            
+            <div class="question-card">
+                <p class="question-text">1. Dampak sosial informatika adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q1" value="A"> A. Pengaruh teknologi pada perkembangan ekonomi negara</label>
+                    <label class="option-label"><input type="radio" name="q1" value="B"> B. Pengaruh teknologi terhadap perilaku, interaksi, dan kebiasaan manusia</label>
+                    <label class="option-label"><input type="radio" name="q1" value="C"> C. Penggunaan teknologi untuk membuat aplikasi digital</label>
+                    <label class="option-label"><input type="radio" name="q1" value="D"> D. Cara membuat media sosial yang menarik</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">2. Berikut ini yang termasuk dampak positif teknologi bagi remaja Gen Z adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q2" value="A"> A. Mengurangi kemampuan komunikasi</label>
+                    <label class="option-label"><input type="radio" name="q2" value="B"> B. Membuat siswa malas belajar</label>
+                    <label class="option-label"><input type="radio" name="q2" value="C"> C. Mempermudah komunikasi dan memperluas jejaring</label>
+                    <label class="option-label"><input type="radio" name="q2" value="D"> D. Menambah ketergantungan pada gadget</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">3. Contoh kecanduan gadget pada siswa adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q3" value="A"> A. Menggunakan HP untuk mencari materi pelajaran</label>
+                    <label class="option-label"><input type="radio" name="q3" value="B"> B. Mengecek HP terus-menerus meski sedang belajar</label>
+                    <label class="option-label"><input type="radio" name="q3" value="C"> C. Membuat desain tugas di Canva</label>
+                    <label class="option-label"><input type="radio" name="q3" value="D"> D. Menggunakan HP untuk diskusi kelompok</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">4. FOMO (Fear of Missing Out) menyebabkan remaja …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q4" value="A"> A. Menjadi lebih suka membaca buku</label>
+                    <label class="option-label"><input type="radio" name="q4" value="B"> B. Tidak tertarik mengikuti tren</label>
+                    <label class="option-label"><input type="radio" name="q4" value="C"> C. Sering cemas karena takut tertinggal informasi</label>
+                    <label class="option-label"><input type="radio" name="q4" value="D"> D. Mengurangi penggunaan media sosial</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">5. Literasi digital penting bagi remaja karena …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q5" value="A"> A. Membantu siswa bermain game lebih cepat</label>
+                    <label class="option-label"><input type="radio" name="q5" value="B"> B. Membuat siswa bisa mengganti password setiap hari</label>
+                    <label class="option-label"><input type="radio" name="q5" value="C"> C. Membantu memahami cara aman menggunakan teknologi dan membedakan fakta dengan hoaks</label>
+                    <label class="option-label"><input type="radio" name="q5" value="D"> D. Membuat siswa semakin sering mengakses media sosial</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">6. Yang termasuk dampak negatif informatika adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q6" value="A"> A. Meningkatkan kreativitas</label>
+                    <label class="option-label"><input type="radio" name="q6" value="B"> B. Kecanduan gadget dan informasi palsu</label>
+                    <label class="option-label"><input type="radio" name="q6" value="C"> C. Mempermudah akses informasi</label>
+                    <label class="option-label"><input type="radio" name="q6" value="D"> D. Memudahkan belajar jarak jauh</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">7. Cara terbaik mengontrol screen time adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q7" value="A"> A. Mengaktifkan notifikasi semua aplikasi</label>
+                    <label class="option-label"><input type="radio" name="q7" value="B"> B. Bermain HP saat belajar agar tidak bosan</label>
+                    <label class="option-label"><input type="radio" name="q7" value="C"> C. Menggunakan fitur Digital Well-Being untuk membatasi waktu</label>
+                    <label class="option-label"><input type="radio" name="q7" value="D"> D. Membuka media sosial sebelum tidur</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">8. Yang termasuk etika komunikasi digital adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q8" value="A"> A. Menyebarkan screenshot chat pribadi</label>
+                    <label class="option-label"><input type="radio" name="q8" value="B"> B. Menghina orang lain secara online</label>
+                    <label class="option-label"><input type="radio" name="q8" value="C"> C. Tidak menyebarkan informasi yang belum pasti benar</label>
+                    <label class="option-label"><input type="radio" name="q8" value="D"> D. Mengunggah semua aktivitas pribadi</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">9. Mengapa sebaiknya HP tidak digunakan saat belajar atau makan?</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q9" value="A"> A. Karena HP bisa membuat makanan cepat dingin</label>
+                    <label class="option-label"><input type="radio" name="q9" value="B"> B. HP membuat siswa terlihat sombong</label>
+                    <label class="option-label"><input type="radio" name="q9" value="C"> C. HP dapat mengganggu fokus dan mengurangi interaksi</label>
+                    <label class="option-label"><input type="radio" name="q9" value="D"> D. HP hanya digunakan oleh orang dewasa</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text">10. Salah satu strategi mengatasi kecanduan gadget adalah …</p>
+                <div class="option-group">
+                    <label class="option-label"><input type="radio" name="q10" value="A"> A. Menggunakan HP sambil belajar</label>
+                    <label class="option-label"><input type="radio" name="q10" value="B"> B. Membuat jadwal digital break setiap hari</label>
+                    <label class="option-label"><input type="radio" name="q10" value="C"> C. Selalu membawa HP ke mana pun</label>
+                    <label class="option-label"><input type="radio" name="q10" value="D"> D. Memainkan game sebelum tidur</label>
+                </div>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="checkResult()">Kirim Jawaban</button>
+        </form>
+    </div>
+
+    <div class="modal-overlay" id="resultModal">
+        <div class="modal-box">
+            <h3 id="modalTitle">Hasil Quiz</h3>
+            <div class="score-display" id="scoreValue">0</div>
+            <p class="result-message" id="resultMessage">Pesan akan muncul disini</p>
+            
+            <a href="#" id="actionBtn" class="modal-btn">Lanjut</a>
+        </div>
+    </div>
+
+    <script>
+        function checkResult() {
+            // 1. KUNCI JAWABAN (10 Soal)
+            const correctAnswers = {
+                q1: 'B',
+                q2: 'C',
+                q3: 'B',
+                q4: 'C',
+                q5: 'C',
+                q6: 'B',
+                q7: 'C',
+                q8: 'C',
+                q9: 'C',
+                q10: 'B'
+            };
+
+            let score = 0;
+            let totalQuestions = 10; // Jumlah soal sekarang 10
+            let form = document.getElementById('quizForm');
+            let formData = new FormData(form);
+
+            // 2. CEK JAWABAN USER
+            for (let [key, value] of formData.entries()) {
+                if (value === correctAnswers[key]) {
+                    score++;
+                }
+            }
+
+            // 3. HITUNG NILAI (Skala 100)
+            let finalScore = Math.round((score / totalQuestions) * 100);
+
+            // 4. TAMPILKAN POPUP
+            let modal = document.getElementById('resultModal');
+            let scoreText = document.getElementById('scoreValue');
+            let msgText = document.getElementById('resultMessage');
+            let btn = document.getElementById('actionBtn');
+            let title = document.getElementById('modalTitle');
+
+            scoreText.innerText = finalScore;
+            modal.style.display = 'flex'; 
+
+            // 5. LOGIKA LULUS / TIDAK LULUS
+            if (finalScore >= 70) {
+                // KONDISI LULUS
+                title.innerText = "🎉 Luar Biasa!";
+                title.style.color = "#00c853";
+                msgText.innerText = "Kamu sudah menguasai materi ini. Silakan lanjut!";
+                
+                btn.innerText = "Lanjut ke Menu Utama";
+                btn.className = "modal-btn btn-success";
+                btn.href = "index.html"; 
+            } else {
+                // KONDISI REMEDIAL (Gagal)
+                title.innerText = "⚠️ Belum Lulus";
+                title.style.color = "#d50000";
+                msgText.innerText = "Nilai kamu masih di bawah 70. Yuk baca materi lagi supaya lebih paham!";
+                
+                btn.innerText = "📖 Baca Materi Lagi";
+                btn.className = "modal-btn btn-fail";
+                
+                // Mengarahkan kembali ke daftar materi
+                btn.href = "isi_materi.html"; 
+            }
+        }
+    </script>
+
+</body>
+</html>

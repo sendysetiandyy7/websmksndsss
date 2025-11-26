@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Belajar</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            width: 100%;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- KOTAK BACAAN --- */
+        .content-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 800px;
+            margin-top: 30px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.8s ease;
+            color: #333;
+        }
+
+        /* Header Materi */
+        .materi-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .category-badge {
+            background: #e3f2fd;
+            color: #090979;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        h1 {
+            margin-top: 10px;
+            color: #090979;
+            font-size: 1.8rem;
+        }
+
+        /* GAMBAR ILUSTRASI (Updated Style) */
+        .materi-image {
+            width: 100%;
+            /* Tinggi diatur otomatis agar gambar tidak gepeng */
+            height: auto; 
+            /* Maksimal tinggi agar tidak terlalu besar di layar lebar */
+            max-height: 350px; 
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            background-color: #f0f8ff; /* Latar belakang biru muda */
+            padding: 20px; /* Memberi jarak di sekitar gambar */
+        }
+        
+        .materi-image img {
+            width: 100%;
+            height: 100%;
+            /* 'contain' agar gambar utuh terlihat semua di dalam kotak */
+            object-fit: contain; 
+        }
+
+        /* --- STYLE ISI MATERI --- */
+        .materi-body { color: #444; line-height: 1.8; font-size: 1rem; }
+        .materi-body h3 { color: #090979; margin-top: 25px; margin-bottom: 10px; font-size: 1.3rem; font-weight: 700; }
+        .materi-body p { margin-bottom: 15px; text-align: justify; }
+        .materi-body ul, .materi-body ol { margin-left: 20px; margin-bottom: 20px; }
+        .materi-body li { margin-bottom: 8px; }
+        .materi-body strong { color: #000; }
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* --- TOMBOL NAVIGASI --- */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-prev { background: white; border: 1px solid #ddd; color: #666; }
+        .btn-prev:hover { background: #f0f0f0; color: #333; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .content-container { padding: 25px; width: 95%; }
+            h1 { font-size: 1.4rem; }
+            /* Di HP gambar lebih kecil */
+            .materi-image { max-height: 200px; padding: 10px; } 
+            .nav-buttons { flex-direction: column-reverse; gap: 10px; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">E-Learning SMK</a>
+    </nav>
+
+    <div class="content-container">
+        
+        <div class="materi-header">
+            <span class="category-badge">Materi Utama</span>
+            <h1>Dampak Sosial Informatika dalam Kehidupan Sehari-hari</h1>
+        </div>
+
+        <div class="materi-image">
+            <img src="dampak.jpeg" alt="Ilustrasi Dampak Sosial Informatika">
+        </div>
+
+        <div class="materi-body">
+            
+            <h3>A. Pengertian Dampak Sosial Informatika</h3>
+            <p>
+                Informatika bukan hanya soal komputer atau gadget, tapi tentang bagaimana teknologi memengaruhi cara kita hidup, berkomunikasi, belajar, dan bekerja. 
+                <strong>Dampak sosial informatika</strong> adalah pengaruh teknologi terhadap perilaku, kebiasaan, dan interaksi manusia baik secara positif maupun negatif.
+            </p>
+            <p>Contohnya bisa dilihat dari:</p>
+            <ul>
+                <li>Cara kita bangun tidur langsung cek HP.</li>
+                <li>Cara kita belajar lewat video atau platform online.</li>
+                <li>Cara kita bersosialisasi lewat media sosial.</li>
+            </ul>
+
+            <div class="highlight-box">
+                💡 <strong>Penting:</strong> Teknologi itu seperti pedang bermata dua. Ia bisa menjadi alat yang sangat berguna, atau senjata yang merugikan, tergantung siapa yang memegangnya.
+            </div>
+
+            <h3>B. Dampak Positif Informatika</h3>
+            <ol>
+                <li><strong>Mempermudah Akses Informasi:</strong> Siswa bisa mencari materi pelajaran kapan pun. Banyak sumber belajar gratis seperti video, artikel, dan modul yang membantu siswa mandiri.</li>
+                <li><strong>Meningkatkan Efektivitas Komunikasi:</strong> Chat, video call, dan media sosial memudahkan kita terhubung. Guru bisa kirim materi, tugas, dan pengumuman secara cepat.</li>
+                <li><strong>Membuka Peluang Belajar Baru:</strong> Seperti kelas online, kursus gratis, dan pelatihan digital.</li>
+                <li><strong>Mendukung Kreativitas:</strong> Seperti editing foto/video, desain, coding, dan animasi. Siswa bisa mengekspresikan diri lewat karya digital.</li>
+                <li><strong>Mempermudah Kegiatan Sehari-hari:</strong> Seperti ojek online, belanja online, dan pembayaran digital yang menghemat waktu dan tenaga.</li>
+            </ol>
+
+            <h3>C. Dampak Negatif Informatika</h3>
+            <ol>
+                <li><strong>Kecanduan Gadget:</strong>
+                    <ul>
+                        <li>Tidak sadar waktu karena <em>scroll</em> media sosial.</li>
+                        <li>Belajar jadi tertunda.</li>
+                        <li>Gangguan tidur karena main HP malam-malam.</li>
+                    </ul>
+                </li>
+                <li><strong>Menurunnya Interaksi Sosial Langsung:</strong>
+                    <ul>
+                        <li>Lebih nyaman chat daripada ngobrol tatap muka.</li>
+                        <li>Malas bersosialisasi dengan keluarga/teman.</li>
+                        <li>Ruang sosial jadi digantikan dunia digital.</li>
+                    </ul>
+                </li>
+                <li><strong>Informasi Palsu & Hoaks:</strong> Mudah percaya berita yang tidak jelas sumbernya yang bisa menimbulkan kepanikan.</li>
+                <li><strong>Cyberbullying:</strong> Komentar kasar, hinaan, dan perundungan online yang berdampak besar pada mental remaja.</li>
+                <li><strong>Privasi Terancam:</strong> Data bisa bocor jika sembarang klik link atau login, serta akun mudah diretas kalau password tidak aman.</li>
+            </ol>
+
+            <h3>D. Pentingnya Bersikap Bijak Menggunakan Teknologi</h3>
+            <p>Untuk mengurangi dampak negatif dan memaksimalkan manfaatnya, siswa harus bisa:</p>
+            <ul>
+                <li><strong>Mengatur waktu penggunaan gadget:</strong> Gunakan HP seperlunya, bukan setiap waktu.</li>
+                <li><strong>Memilah informasi:</strong> Cek sumber, jangan percaya semua yang dibaca.</li>
+                <li><strong>Menjaga etika digital:</strong> Sopan di media sosial, tidak menyebarkan konten merugikan.</li>
+                <li><strong>Mengutamakan interaksi nyata:</strong> Tetap ngobrol langsung, bukan cuma lewat chat.</li>
+                <li><strong>Menggunakan teknologi untuk belajar:</strong> Fokus pada pengembangan diri.</li>
+            </ul>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="materi.html" class="btn btn-prev">← Kembali</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

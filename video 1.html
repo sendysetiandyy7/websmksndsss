@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Interaktif</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            width: 100%;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- KONTEN UTAMA --- */
+        .video-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 900px; /* Lebih lebar untuk video */
+            margin-top: 30px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.8s ease;
+        }
+
+        .video-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .video-header h2 {
+            color: #090979;
+            font-size: 1.8rem;
+        }
+
+        .badge-h5p {
+            display: inline-block;
+            background: #e91e63; /* Pink H5P */
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* --- AREA RESPONSIVE IFRAME (H5P Wrapper) --- */
+        /* Trik agar video selalu presisi 16:9 di HP maupun Laptop */
+        .h5p-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            height: 0;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .h5p-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Deskripsi Video */
+        .video-desc {
+            color: #444;
+            line-height: 1.6;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #090979;
+        }
+
+        /* --- TOMBOL NAVIGASI --- */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-prev {
+            background: white;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        .btn-prev:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-next {
+            background: #090979;
+            color: white;
+        }
+        .btn-next:hover {
+            background: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        /* Animasi */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">E-Learning SMK</a>
+    </nav>
+
+    <div class="video-container">
+        
+        <div class="video-header">
+            <span class="badge-h5p">Interactive Video</span>
+            <h2>Video Pertemuan 1: Pengenalan Materi</h2>
+        </div>
+
+        <div class="h5p-wrapper">
+            <iframe src="https://h5p.org/h5p/embed/617" 
+                    frameborder="0" 
+                    allowfullscreen="allowfullscreen" 
+                    allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
+            </iframe>
+        </div>
+
+        <div class="video-desc">
+            <strong>Instruksi:</strong><br>
+            Tonton video di atas sampai selesai. Karena ini video interaktif, video mungkin akan berhenti otomatis dan meminta kamu menjawab pertanyaan. Pastikan kamu menjawabnya untuk lanjut.
+        </div>
+
+        <div class="nav-buttons">
+            <a href="halaman3.html" class="btn btn-prev">← Daftar Video</a>
+
+        </div>
+
+    </div>
+
+    <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+
+</body>
+</html>

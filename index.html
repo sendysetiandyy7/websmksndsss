@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BODY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Background Gradient Biru (Konsisten) */
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* --- KONTEN TENGAH --- */
+        .welcome-container {
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            margin-bottom: 50px;
+        }
+
+        /* --- TOMBOL UTAMA --- */
+        .btn-start {
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #090979; /* Teks Biru */
+            background: white; /* Tombol Putih */
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek Hover (Membesar & Bersinar) */
+        .btn-start:hover {
+            transform: scale(1.1); /* Membesar sedikit */
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+            background: #f0f8ff;
+        }
+
+        /* Efek Animasi Tombol Berdenyut (Opsional) */
+        .btn-start {
+            animation: pulse 2s infinite;
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        /* Responsif HP */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .btn-start { padding: 15px 40px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-container">
+        <h1>E-LEARNING</h1>
+        <h1>SMK AL-Musaddadiyah</h1>
+        <p>Media Pembelajaran Interaktif</p>
+
+        <a href="login-firebase.html" class="btn-start">Login / Daftar</a>
+    </div>
+
+</body>
+</html>

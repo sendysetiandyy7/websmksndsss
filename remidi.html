@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Materi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- CONTAINER UTAMA --- */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        /* --- CARD MATERI --- */
+        .materi-card {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideUp 0.5s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 150, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .materi-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .materi-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .materi-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Efek Hover Card */
+        .materi-card:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .materi-card:hover .materi-title,
+        .materi-card:hover .materi-desc,
+        .materi-card:hover .book-icon {
+            color: #090979;
+        }
+        
+        .materi-card:hover .book-icon {
+            background: #fff8e1;
+        }
+
+        /* --- TOMBOL QUIZ (Baru) --- */
+        .btn-quiz {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: #ff9800; /* Warna Orange agar mencolok */
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: slideUp 0.5s forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .btn-quiz:hover {
+            background: #e68900;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+        }
+
+        /* Tombol Kembali (Link Kecil) */
+        .btn-back {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            opacity: 0;
+            animation: slideUp 0.5s forwards;
+            animation-delay: 0.5s;
+        }
+        .btn-back:hover { color: white; }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">E-Learning SMK</a>
+    </nav>
+
+    <div class="container">
+        <h2>Pilih Bab Materi</h2>
+
+        <a href="isimateri.html" class="materi-card delay-1">
+            <div class="book-icon">📖</div>
+            <div class="materi-info">
+                <span class="materi-title">Materi Pertemuan 1</span>
+                <span class="materi-desc">Pengantar & Definisi</span>
+            </div>
+        </a>
+
+        <a href="#" class="materi-card delay-2">
+            <div class="book-icon">📖</div>
+            <div class="materi-info">
+                <span class="materi-title">Materi Pertemuan 2</span>
+                <span class="materi-desc">Teori Utama</span>
+            </div>
+        </a>
+
+        <a href="#" class="materi-card delay-3">
+            <div class="book-icon">📖</div>
+            <div class="materi-info">
+                <span class="materi-title">Materi Pertemuan 3</span>
+                <span class="materi-desc">Penerapan Praktis</span>
+            </div>
+        </a>
+
+        <a href="quiz.html" class="btn-quiz">📝 Ulangi Quiz</a>
+
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk & Daftar (Online)</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            color: #333; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; font-size: 16px;
+        }
+        #daftar, #login {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 40px 30px;
+            width: 90%; max-width: 400px;
+            text-align: center; backdrop-filter: blur(5px);
+        }
+        h2 { color: #090979; margin-bottom: 25px; font-weight: 700; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input {
+            width: 100%; padding: 15px; border-radius: 12px;
+            font-size: 15px; border: 1px solid #ddd; background: #f9f9f9;
+        }
+        button[type="submit"] {
+            background-color: #ff9800; color: white; border: none; cursor: pointer;
+            padding: 15px 20px; border-radius: 50px; font-weight: 600; width: 100%; margin-top: 10px;
+        }
+        button[type="submit"]:hover { background-color: #e68900; }
+        .back-button {
+            background: transparent; color: #666; padding: 10px 20px; border-radius: 50px;
+            font-size: 14px; margin-top: 20px; cursor: pointer; border: 1px solid #ddd;
+        }
+        .message { margin-top: 15px; font-size: 14px; font-weight: 600; min-height: 20px; }
+        a { color: #090979; text-decoration: none; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="daftar">
+        <h2>Daftar Akun Baru</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <input type="email" id="regEmail" placeholder="Email (Contoh: siswa@smk.com)" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="regPass" placeholder="Password (Min. 6 Karakter)" required>
+            </div>
+            <button type="submit" id="btnReg">Daftar Sekarang</button>
+        </form>
+        <div class="message" id="daftarMessage"></div>
+        <p>Sudah punya akun? <a id="linkKeLogin">Login</a></p>
+        <button class="back-button" onclick="window.location.href='Firstlog.html'">Kembali</button>
+    </div>
+
+    <div id="login" style="display: none;">
+        <h2>Masuk Akun</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" id="loginEmail" placeholder="Email Anda" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="loginPass" placeholder="Password" required>
+            </div>
+            <button type="submit" id="btnLogin">Login</button>
+        </form>
+        <div class="message" id="loginMessage"></div>
+        <p>Belum punya akun? <a id="linkKeDaftar">Daftar</a></p>
+        <button class="back-button" onclick="window.location.href='Firstlog.html'">Kembali</button>
+    </div>
+
+    <script type="module">
+        // 1. Import Library Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+        from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // 2. KONFIGURASI (SUDAH DIPERBAIKI SESUAI SCREENSHOT)
+        const firebaseConfig = {
+          apiKey: "AIzaSyCvlai-CR39S_Z2s4rUhJcVX2Di3IgDZYg",
+          authDomain: "websmk-saya.firebaseapp.com",
+          projectId: "websmk-saya",
+          storageBucket: "websmk-saya.firebasestorage.app",
+          messagingSenderId: "89778838386",
+          appId: "1:89778838386:web:6339ca30d13bc57aa05beb"
+        };
+
+        // 3. Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // --- LOGIKA PROGRAM ---
+        const viewDaftar = document.getElementById('daftar');
+        const viewLogin = document.getElementById('login');
+        const msgReg = document.getElementById('daftarMessage');
+        const msgLog = document.getElementById('loginMessage');
+
+        // Pindah Halaman
+        document.getElementById('linkKeLogin').addEventListener('click', () => {
+            viewDaftar.style.display = 'none';
+            viewLogin.style.display = 'block';
+            msgReg.innerText = '';
+        });
+
+        document.getElementById('linkKeDaftar').addEventListener('click', () => {
+            viewLogin.style.display = 'none';
+            viewDaftar.style.display = 'block';
+            msgLog.innerText = '';
+        });
+
+        // --- FUNGSI DAFTAR ---
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('regEmail').value;
+            const pass = document.getElementById('regPass').value;
+            const btn = document.getElementById('btnReg');
+
+            msgReg.style.color = 'blue';
+            msgReg.innerText = 'Sedang mendaftar...';
+            btn.disabled = true;
+
+            createUserWithEmailAndPassword(auth, email, pass)
+                .then((userCredential) => {
+                    msgReg.style.color = 'green';
+                    msgReg.innerText = '✅ Berhasil! Silakan Login.';
+                    document.getElementById('registerForm').reset();
+                    btn.disabled = false;
+                    setTimeout(() => {
+                        viewDaftar.style.display = 'none';
+                        viewLogin.style.display = 'block';
+                        msgReg.innerText = '';
+                    }, 2000);
+                })
+                .catch((error) => {
+                    btn.disabled = false;
+                    msgReg.style.color = 'red';
+                    if (error.code === 'auth/email-already-in-use') {
+                        msgReg.innerText = '⚠️ Email sudah terdaftar!';
+                    } else if (error.code === 'auth/weak-password') {
+                        msgReg.innerText = '⚠️ Password terlalu lemah (Min 6 huruf)';
+                    } else {
+                        msgReg.innerText = 'Gagal: ' + error.message;
+                    }
+                });
+        });
+
+        // --- FUNGSI LOGIN ---
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPass').value;
+            const btn = document.getElementById('btnLogin');
+
+            msgLog.style.color = 'blue';
+            msgLog.innerText = 'Sedang masuk...';
+            btn.disabled = true;
+
+            signInWithEmailAndPassword(auth, email, pass)
+                .then((userCredential) => {
+                    msgLog.style.color = 'green';
+                    msgLog.innerText = '✅ Login Sukses! Mengalihkan...';
+                    setTimeout(() => {
+                        window.location.href = 'Utama.html'; 
+                    }, 1500);
+                })
+                .catch((error) => {
+                    btn.disabled = false;
+                    msgLog.style.color = 'red';
+                    if (error.code === 'auth/invalid-credential') {
+                        msgLog.innerText = '⚠️ Email atau Password Salah!';
+                    } else {
+                        msgLog.innerText = 'Gagal: ' + error.message;
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
