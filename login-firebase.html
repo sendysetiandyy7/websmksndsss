@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body {
@@ -181,7 +182,7 @@
         <form id="registerForm">
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
-                <input type="email" id="regEmail" placeholder="Email Kamu" required>
+                <input type="email" id="regEmail" placeholder="Email Sekolah" required>
             </div>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
@@ -227,6 +228,7 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+        // KONFIGURASI FIREBASE KAMU
         const firebaseConfig = {
           apiKey: "AIzaSyCvlai-CR39S_Z2s4rUhJcVX2Di3IgDZYg",
           authDomain: "websmk-saya.firebaseapp.com",
@@ -244,15 +246,6 @@
         const msgReg = document.getElementById('daftarMessage');
         const msgLog = document.getElementById('loginMessage');
 
-        function switchView(hide, show) {
-            hide.style.opacity = '0';
-            setTimeout(() => {
-                hide.style.display = 'none';
-                show.style.display = 'block';
-                setTimeout(() => { show.style.opacity = '1'; }, 50);
-            }, 300);
-        }
-
         document.getElementById('linkKeLogin').addEventListener('click', () => {
             viewDaftar.style.display = 'none';
             viewLogin.style.display = 'block';
@@ -265,6 +258,7 @@
             msgLog.innerText = '';
         });
 
+        // --- DAFTAR ---
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('regEmail').value;
@@ -299,6 +293,7 @@
                 });
         });
 
+        // --- LOGIN ---
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -314,8 +309,10 @@
                 .then((userCredential) => {
                     msgLog.style.color = '#00ff88';
                     msgLog.innerText = '✅ Login Sukses! Mengalihkan...';
+                    
+                    // --- PERUBAHAN DI SINI: Mengarah ke utama.html ---
                     setTimeout(() => {
-                        window.location.href = 'Utama.html';
+                        window.location.href = 'utama.html'; 
                     }, 1500);
                 })
                 .catch((error) => {
