@@ -3,86 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masuk & Daftar (Online)</title>
+    <title>Masuk & Daftar</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
         body {
             background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
-            color: #333; display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; font-size: 16px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
         }
-        #daftar, #login {
-            background-color: rgba(255, 255, 255, 0.95);
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .c1 { width: 300px; height: 300px; background: #ff0055; top: -50px; left: -50px; }
+        .c2 { width: 250px; height: 250px; background: #00d4ff; bottom: -50px; right: -50px; }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            padding: 40px 30px;
-            width: 90%; max-width: 400px;
-            text-align: center; backdrop-filter: blur(5px);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: floatUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
         }
-        h2 { color: #090979; margin-bottom: 25px; font-weight: 700; }
-        .form-group { margin-bottom: 20px; }
-        .form-group input {
-            width: 100%; padding: 15px; border-radius: 12px;
-            font-size: 15px; border: 1px solid #ddd; background: #f9f9f9;
+
+        h2 {
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: 1px;
         }
-        button[type="submit"] {
-            background-color: #ff9800; color: white; border: none; cursor: pointer;
-            padding: 15px 20px; border-radius: 50px; font-weight: 600; width: 100%; margin-top: 10px;
+
+        p.subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
         }
-        button[type="submit"]:hover { background-color: #e68900; }
-        .back-button {
-            background: transparent; color: #666; padding: 10px 20px; border-radius: 50px;
-            font-size: 14px; margin-top: 20px; cursor: pointer; border: 1px solid #ddd;
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
         }
-        .message { margin-top: 15px; font-size: 14px; font-weight: 600; min-height: 20px; }
-        a { color: #090979; text-decoration: none; font-weight: 600; cursor: pointer; }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        button.btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            margin-top: 10px;
+        }
+
+        button.btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
+        }
+
+        button.btn-submit:active {
+            transform: scale(0.95);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .toggle-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .toggle-text a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-text a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .back-btn:hover { color: white; }
+
+        .message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            min-height: 20px;
+            font-weight: 600;
+        }
+
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div id="daftar">
-        <h2>Daftar Akun Baru</h2>
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+
+    <div class="login-container" id="daftar">
+        <h2>Daftar Akun</h2>
+        <p class="subtitle">Bergabunglah untuk mulai belajar seru!</p>
+        
         <form id="registerForm">
-            <div class="form-group">
-                <input type="email" id="regEmail" placeholder="Email (Contoh: siswa@smk.com)" required>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="regEmail" placeholder="Email Kamu" required>
             </div>
-            <div class="form-group">
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
                 <input type="password" id="regPass" placeholder="Password (Min. 6 Karakter)" required>
             </div>
-            <button type="submit" id="btnReg">Daftar Sekarang</button>
+            <button type="submit" id="btnReg" class="btn-submit">Daftar Sekarang</button>
         </form>
+
         <div class="message" id="daftarMessage"></div>
-        <p>Sudah punya akun? <a id="linkKeLogin">Login</a></p>
-        <button class="back-button" onclick="window.location.href='index.html'">Kembali</button>
+
+        <div class="toggle-text">
+            Sudah punya akun? <a id="linkKeLogin">Login disini</a>
+        </div>
+        <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
     </div>
 
-    <div id="login" style="display: none;">
-        <h2>Masuk Akun</h2>
+    <div class="login-container" id="login" style="display: none;">
+        <h2>Selamat Datang</h2>
+        <p class="subtitle">Silakan login untuk melanjutkan</p>
+        
         <form id="loginForm">
-            <div class="form-group">
-                <input type="email" id="loginEmail" placeholder="Email Anda" required>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="email" id="loginEmail" placeholder="Email Kamu" required>
             </div>
-            <div class="form-group">
+            <div class="input-group">
+                <i class="fas fa-key"></i>
                 <input type="password" id="loginPass" placeholder="Password" required>
             </div>
-            <button type="submit" id="btnLogin">Login</button>
+            <button type="submit" id="btnLogin" class="btn-submit">Masuk</button>
         </form>
+
         <div class="message" id="loginMessage"></div>
-        <p>Belum punya akun? <a id="linkKeDaftar">Daftar</a></p>
-        <button class="back-button" onclick="window.location.href='index.html'">Kembali</button>
+
+        <div class="toggle-text">
+            Belum punya akun? <a id="linkKeDaftar">Daftar disini</a>
+        </div>
+        <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
     </div>
 
     <script type="module">
-        // 1. Import Library Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // 2. KONFIGURASI (SUDAH DIPERBAIKI SESUAI SCREENSHOT)
         const firebaseConfig = {
           apiKey: "AIzaSyCvlai-CR39S_Z2s4rUhJcVX2Di3IgDZYg",
           authDomain: "websmk-saya.firebaseapp.com",
@@ -92,17 +236,23 @@
           appId: "1:89778838386:web:6339ca30d13bc57aa05beb"
         };
 
-        // 3. Inisialisasi Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // --- LOGIKA PROGRAM ---
         const viewDaftar = document.getElementById('daftar');
         const viewLogin = document.getElementById('login');
         const msgReg = document.getElementById('daftarMessage');
         const msgLog = document.getElementById('loginMessage');
 
-        // Pindah Halaman
+        function switchView(hide, show) {
+            hide.style.opacity = '0';
+            setTimeout(() => {
+                hide.style.display = 'none';
+                show.style.display = 'block';
+                setTimeout(() => { show.style.opacity = '1'; }, 50);
+            }, 300);
+        }
+
         document.getElementById('linkKeLogin').addEventListener('click', () => {
             viewDaftar.style.display = 'none';
             viewLogin.style.display = 'block';
@@ -115,72 +265,67 @@
             msgLog.innerText = '';
         });
 
-        // --- FUNGSI DAFTAR ---
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('regEmail').value;
             const pass = document.getElementById('regPass').value;
             const btn = document.getElementById('btnReg');
 
-            msgReg.style.color = 'blue';
-            msgReg.innerText = 'Sedang mendaftar...';
+            msgReg.style.color = '#00d4ff';
+            msgReg.innerText = '⏳ Sedang mendaftar...';
             btn.disabled = true;
+            btn.innerText = 'Memproses...';
 
             createUserWithEmailAndPassword(auth, email, pass)
                 .then((userCredential) => {
-                    msgReg.style.color = 'green';
-                    msgReg.innerText = '✅ Berhasil! Silakan Login.';
+                    msgReg.style.color = '#00ff88';
+                    msgReg.innerText = '✅ Berhasil! Mengalihkan ke Login...';
                     document.getElementById('registerForm').reset();
-                    btn.disabled = false;
                     setTimeout(() => {
                         viewDaftar.style.display = 'none';
                         viewLogin.style.display = 'block';
                         msgReg.innerText = '';
+                        btn.disabled = false;
+                        btn.innerText = 'Daftar Sekarang';
                     }, 2000);
                 })
                 .catch((error) => {
                     btn.disabled = false;
-                    msgReg.style.color = 'red';
-                    if (error.code === 'auth/email-already-in-use') {
-                        msgReg.innerText = '⚠️ Email sudah terdaftar!';
-                    } else if (error.code === 'auth/weak-password') {
-                        msgReg.innerText = '⚠️ Password terlalu lemah (Min 6 huruf)';
-                    } else {
-                        msgReg.innerText = 'Gagal: ' + error.message;
-                    }
+                    btn.innerText = 'Daftar Sekarang';
+                    msgReg.style.color = '#ff4b2b';
+                    if (error.code === 'auth/email-already-in-use') msgReg.innerText = '⚠️ Email sudah terdaftar!';
+                    else if (error.code === 'auth/weak-password') msgReg.innerText = '⚠️ Password minimal 6 karakter!';
+                    else msgReg.innerText = 'Gagal: ' + error.message;
                 });
         });
 
-        // --- FUNGSI LOGIN ---
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const pass = document.getElementById('loginPass').value;
             const btn = document.getElementById('btnLogin');
 
-            msgLog.style.color = 'blue';
-            msgLog.innerText = 'Sedang masuk...';
+            msgLog.style.color = '#00d4ff';
+            msgLog.innerText = '⏳ Sedang masuk...';
             btn.disabled = true;
+            btn.innerText = 'Memproses...';
 
             signInWithEmailAndPassword(auth, email, pass)
                 .then((userCredential) => {
-                    msgLog.style.color = 'green';
+                    msgLog.style.color = '#00ff88';
                     msgLog.innerText = '✅ Login Sukses! Mengalihkan...';
                     setTimeout(() => {
-                        window.location.href = 'Utama.html'; 
+                        window.location.href = 'menu.html';
                     }, 1500);
                 })
                 .catch((error) => {
                     btn.disabled = false;
-                    msgLog.style.color = 'red';
-                    if (error.code === 'auth/invalid-credential') {
-                        msgLog.innerText = '⚠️ Email atau Password Salah!';
-                    } else {
-                        msgLog.innerText = 'Gagal: ' + error.message;
-                    }
+                    btn.innerText = 'Masuk';
+                    msgLog.style.color = '#ff4b2b';
+                    if (error.code === 'auth/invalid-credential') msgLog.innerText = '⚠️ Email atau Password Salah!';
+                    else msgLog.innerText = 'Gagal: ' + error.message;
                 });
         });
     </script>
 </body>
-
 </html>
