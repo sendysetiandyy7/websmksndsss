@@ -12,22 +12,15 @@
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden; /* Mencegah geser kanan-kiri */
-        }
-
         body {
             background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
-            background-attachment: fixed; /* Background tetap diam saat scroll */
-            background-size: cover;       /* Background memenuhi layar */
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            overflow: hidden; /* Mencegah scroll bar */
         }
 
         /* Dekorasi Background (Lingkaran Blur) */
@@ -176,18 +169,17 @@
         /* --- KHUSUS HP (MOBILE RESPONSIVE) --- */
         @media (max-width: 480px) {
             body {
-                padding: 15px;
-                align-items: center;
+                padding: 15px; /* Kurangi padding body */
+                align-items: center; /* Pastikan tetap tengah */
             }
 
             .login-container {
-                padding: 30px 20px;
+                padding: 30px 20px; /* Kurangi padding dalam */
                 width: 100%;
-                margin: 0 10px; /* Tambahan margin biar ga nempel pinggir */
             }
 
             h2 {
-                font-size: 1.7rem;
+                font-size: 1.7rem; /* Kecilkan judul sedikit */
             }
 
             p.subtitle {
@@ -196,13 +188,13 @@
             }
 
             .input-group input {
-                font-size: 0.95rem;
+                font-size: 0.95rem; /* Font input pas di mata */
                 padding: 14px 14px 14px 45px;
             }
 
             .circle {
                 width: 150px;
-                height: 150px;
+                height: 150px; /* Kecilkan bola dekorasi */
                 filter: blur(50px);
             }
             
@@ -269,7 +261,7 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // --- 🔥🔥 PASTE ULANG CONFIG FIREBASE KAMU DI SINI 🔥🔥 ---
+        // --- 🔥🔥 PASTE CONFIG FIREBASE KAMU DI SINI (YANG SUDAH BENAR) 🔥🔥 ---
         const firebaseConfig = {
           apiKey: "AIzaSyCvlai-CR39S_Z2s4rUhJcVX2Di3IgDZYg",
           authDomain: "websmk-saya.firebaseapp.com",
@@ -278,7 +270,7 @@
           messagingSenderId: "89778838386",
           appId: "1:89778838386:web:6339ca30d13bc57aa05beb"
         };
-        // --------------------------------------------------------------
+        // ---------------------------------------------------------------------
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
