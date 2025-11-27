@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- RESET CSS --- */
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif; /* Font Modern */
+            font-family: 'Poppins', sans-serif; 
         }
 
         body {
@@ -23,16 +23,16 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Mencegah scroll bar jika tidak perlu */
+            overflow: hidden; 
         }
 
-        /* --- NAVBAR / HEADER --- */
+      
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 30px;
-            background: rgba(255, 255, 255, 0.05); /* Efek transparan kaca */
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
@@ -52,7 +52,7 @@
             color: white;
         }
 
-        /* --- KONTEN UTAMA (HERO) --- */
+       
         .hero-container {
             flex: 1;
             display: flex;
@@ -64,7 +64,7 @@
             position: relative;
         }
 
-        /* Efek hiasan bulat di belakang (Opsional, agar tidak sepi) */
+       
         .decoration-circle {
             position: absolute;
             width: 300px;
@@ -83,7 +83,7 @@
             text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* Animasi masuk perlahan untuk teks */
+        
         .fade-in {
             animation: fadeInUp 1s ease-out;
         }
@@ -96,7 +96,7 @@
             font-weight: 300;
         }
 
-        /* --- TOMBOL --- */
+        
         .btn-lanjut {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
@@ -115,11 +115,11 @@
         .btn-lanjut:hover {
             background: white;
             color: #090979;
-            transform: translateY(-3px); /* Efek naik sedikit saat di hover */
+            transform: translateY(-3px); 
             box-shadow: 0 8px 20px rgba(255,255,255,0.3);
         }
 
-        /* --- KEYFRAMES ANIMASI --- */
+       
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -131,10 +131,10 @@
             }
         }
 
-        /* --- RESPONSIVE (UNTUK HP) --- */
+       
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem; /* Ukuran font lebih kecil di HP */
+                font-size: 2rem;
             }
             
             .sub-text {
@@ -171,4 +171,5 @@
     </script>
 
 </body>
+
 </html>
