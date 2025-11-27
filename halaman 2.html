@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS UTAMA (SAMA) --- */
+       
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%); color: white; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; }
@@ -23,13 +23,13 @@
         .back-link { margin-top: 20px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .back-link:hover { color: white; }
 
-        /* --- CSS UNTUK POPUP KUSTOM (BARU) --- */
+        
         .modal-overlay {
-            display: none; /* Awalnya sembunyi */
+            display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); /* Latar gelap transparan */
+            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(5px);
             z-index: 1000;
             justify-content: center;
@@ -112,7 +112,7 @@
     </div>
 
     <script>
-        // Fungsi memunculkan popup
+        
         function munculkanPopup() {
             document.getElementById('popupKonfirmasi').style.display = 'flex';
         }
@@ -122,11 +122,12 @@
             document.getElementById('popupKonfirmasi').style.display = 'none';
         }
 
-        // Fungsi jika tombol "Sudah" diklik
+        
         function lanjutQuiz() {
             window.location.href = "quiz.html";
         }
     </script>
 
 </body>
+
 </html>
