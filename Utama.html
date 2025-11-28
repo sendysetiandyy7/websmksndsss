@@ -8,149 +8,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif; 
-        }
+        /* --- RESET CSS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%); /* Gradasi Modern */
-            /* Alternatif jika ingin biru gelap polos seperti desain asli: background-color: #00004d; */
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
             color: white;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; 
+            display: flex; flex-direction: column; overflow: hidden;
         }
 
-      
+        /* --- NAVBAR --- */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
+            position: fixed; width: 100%; top: 0; z-index: 100;
         }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+        .menu-icon { font-size: 1.8rem; cursor: pointer; color: white; }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        .menu-icon {
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: white;
-        }
-
-       
+        /* --- HERO SECTION --- */
         .hero-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
+            flex: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px; position: relative;
         }
 
-       /* BAGIAN TEKS (SAPAAN) */
-        .hero-text { flex: 1; animation: slideIn 0.8s ease; }
-        
-        h1 {
-            font-size: 2.8rem; line-height: 1.2; margin-bottom: 10px; font-weight: 700;
-        }
-        .highlight { color: #00d4ff; }
-        
-        p.subtitle {
-            font-size: 1rem; color: #e0e0e0; margin-bottom: 30px; 
-            font-weight: 300; line-height: 1.6; max-width: 90%;
-        }
         .decoration-circle {
-            position: absolute;
-            width: 300px;
-            height: 300px;
+            position: absolute; width: 300px; height: 300px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
+            border-radius: 50%; filter: blur(80px); z-index: -1;
         }
+
+        .hero-text { animation: slideIn 0.8s ease; }
 
         h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;
+            font-weight: 700; text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
         }
-
         
-        .fade-in {
-            animation: fadeInUp 1s ease-out;
-        }
+        .highlight { color: #00d4ff; }
 
         .sub-text {
-            margin-top: 50px;
-            font-size: 1rem;
-            color: #e0e0e0;
-            margin-bottom: 15px;
+            font-size: 1rem; color: #e0e0e0; margin-bottom: 30px; margin-top: 10px;
             font-weight: 300;
         }
 
-        
+        /* --- BUTTON --- */
         .btn-lanjut {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            padding: 12px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
+            color: white; text-decoration: none;
+            padding: 12px 40px; border-radius: 50px;
+            font-weight: 600; font-size: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            transition: all 0.3s ease; backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-
         .btn-lanjut:hover {
-            background: white;
-            color: #090979;
-            transform: translateY(-3px); 
+            background: white; color: #090979;
+            transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255,255,255,0.3);
         }
 
-       
+        /* --- ANIMASI --- */
+        .fade-in { animation: fadeInUp 1s ease-out; }
+        
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-       
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .sub-text {
-                margin-top: 30px;
-            }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -158,18 +90,18 @@
 
     <nav>
         <div class="logo">E-Learning SMK</div>
-        <div class="menu-icon" </div> </nav>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div> 
+    </nav>
 
     <main class="hero-container">
         <div class="decoration-circle"></div>
 
-        <div class="container">
-        
         <div class="hero-text">
-            <h1>Halo,<br><span class="highlight">Sang Juara!</span> </h1>
-          
+            <h1>
+                <span id="sapaan-waktu">Halo</span>,<br>
+                <span class="highlight">Sang Juara!</span>
+            </h1>
         </div>
-
 
         <div class="bottom-section fade-in" style="animation-delay: 0.3s;">
             <p class="sub-text">Pahami materi dulu yuk</p>
@@ -177,14 +109,38 @@
         </div>
     </main>
 
- <script>
+    <script>
+        // 1. Fungsi Navigasi (Placeholder)
         function toggleMenu() {
-            alert("Menu diklik! Nanti kita isi dengan link navigasi.");
+            alert("Menu diklik!");
         }
+
+        // 2. LOGIKA SAPAAN REAL-TIME
+        function updateGreeting() {
+            const date = new Date();
+            const hour = date.getHours(); // Mengambil jam saat ini (0-23)
+            const greetingElement = document.getElementById('sapaan-waktu');
+            let greeting = "Halo";
+
+            // Aturan Waktu (Bisa disesuaikan)
+            if (hour >= 4 && hour < 11) {
+                greeting = "Selamat Pagi";
+            } else if (hour >= 11 && hour < 15) {
+                greeting = "Selamat Siang";
+            } else if (hour >= 15 && hour < 18) {
+                greeting = "Selamat Sore";
+            } else {
+                greeting = "Selamat Malam";
+            }
+
+            // Masukkan teks ke dalam HTML
+            greetingElement.innerText = greeting;
+        }
+
+        // Jalankan fungsi saat halaman selesai dimuat
+        updateGreeting();
+
     </script>
 
 </body>
-
 </html>
-
-
