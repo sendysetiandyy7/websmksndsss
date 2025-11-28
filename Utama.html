@@ -3,176 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Belajar SMK</title>
+    <title>Aplikasi Belajar SMK</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- RESET CSS --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-        body {
-            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex; flex-direction: column;
-            overflow-x: hidden;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif; 
         }
 
-        /* --- NAVBAR --- */
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%); /* Gradasi Modern */
+            /* Alternatif jika ingin biru gelap polos seperti desain asli: background-color: #00004d; */
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+
+      
         nav {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
         }
 
-        .logo { font-weight: 700; font-size: 1.4rem; letter-spacing: 1px; color: #fff; }
-        .user-profile { font-size: 0.9rem; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
 
-        /* --- MAIN LAYOUT --- */
-        .container {
+        .menu-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+       
+        .hero-container {
             flex: 1;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            padding: 20px;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
         }
 
-        /* BAGIAN KIRI (TEKS) */
-        .hero-text {
-            flex: 1;
-            animation: slideRight 1s ease;
+       
+        .decoration-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
         }
 
         h1 {
-            font-size: 3rem; line-height: 1.2; margin-bottom: 15px; font-weight: 700;
-            text-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
         }
+
         
-        .highlight { color: #00d4ff; }
-
-        p.subtitle {
-            font-size: 1.1rem; color: #e0e0e0; margin-bottom: 40px; font-weight: 300;
-            max-width: 90%;
+        .fade-in {
+            animation: fadeInUp 1s ease-out;
         }
 
-        /* BAGIAN KANAN (KARTU MENU) */
-        .menu-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
-            gap: 20px;
-            animation: slideLeft 1s ease;
+        .sub-text {
+            margin-top: 50px;
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            font-weight: 300;
         }
 
-        /* Desain Kartu Menu */
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            height: 160px;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
+        
+        .btn-lanjut {
+            display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            border-color: #00d4ff;
+            color: white;
+            text-decoration: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .card-icon { font-size: 2.5rem; margin-bottom: 10px; }
-        .card-title { font-size: 1.2rem; font-weight: 600; }
-        .card-desc { font-size: 0.8rem; color: #ccc; margin-top: 5px; }
-
-        /* Kartu "Lanjut Belajar" dibuat beda (lebih menonjol) */
-        .card.primary {
-            background: linear-gradient(135deg, #00d4ff 0%, #090979 100%);
-            border: none;
-            grid-column: span 2; /* Melebar penuhi 2 kolom */
-            flex-direction: row;
-            align-items: center;
-            height: auto;
-            padding: 30px;
+        .btn-lanjut:hover {
+            background: white;
+            color: #090979;
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(255,255,255,0.3);
         }
 
-        .card.primary:hover { transform: scale(1.02); }
-
-        .btn-arrow {
-            background: white; color: #090979; width: 40px; height: 40px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: bold; margin-left: auto;
+       
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* --- ANIMASI --- */
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideLeft {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .container { flex-direction: column; text-align: center; gap: 30px; }
-            .hero-text { margin-top: 20px; }
-            .menu-grid { width: 100%; }
-            p.subtitle { margin: 0 auto 30px auto; }
-            h1 { font-size: 2.2rem; }
-            .card.primary { flex-direction: column; text-align: left; align-items: flex-start; }
-            .btn-arrow { margin-top: 15px; }
+       
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .sub-text {
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">🚀 E-Learning SMK</div>
-       
-    </nav>
+        <div class="logo">E-Learning SMK</div>
+        <div class="menu-icon" </div> </nav>
 
-    <div class="container">
-        
-        <div class="hero-text">
-            <h1>Selamat Datang,<br> <span class="highlight">Sang Pembelajar!</span></h1>
-            <p class="subtitle">
-                Siap untuk meningkatkan skill hari ini? Akses materi, video, dan kuis interaktif dalam satu tempat.
-            </p>
+    <main class="hero-container">
+        <div class="decoration-circle"></div>
+
+        <h1 class="fade-in">
+            Haloo<br>
+            Mari Kita Belajar<br>
+            Bersama
+        </h1>
+
+        <div class="bottom-section fade-in" style="animation-delay: 0.3s;">
+            <p class="sub-text">Pahami materi dulu yuk</p>
+            <a href="halaman 2.html" class="btn-lanjut">Lanjut</a>
         </div>
+    </main>
 
-        <div class="menu-grid">
-            
-            <a href="halaman 2.html" class="card primary">
-                <div>
-                    <div class="card-title">Mulai Belajar Sekarang</div>
-                    <div class="card-desc">Lanjutkan progres materi terakhir kamu</div>
-                </div>
-                <div class="btn-arrow">➜</div>
-            </a>
-
-
-
-        </div>
-    </div>
+ <script>
+        function toggleMenu() {
+            alert("Menu diklik! Nanti kita isi dengan link navigasi.");
+        }
+    </script>
 
 </body>
+
 </html>
