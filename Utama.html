@@ -110,19 +110,19 @@
     </main>
 
     <script>
-        // 1. Fungsi Navigasi (Placeholder)
+    
         function toggleMenu() {
             alert("Menu diklik!");
         }
 
-        // 2. LOGIKA SAPAAN REAL-TIME
+  
         function updateGreeting() {
             const date = new Date();
             const hour = date.getHours(); // Mengambil jam saat ini (0-23)
             const greetingElement = document.getElementById('sapaan-waktu');
             let greeting = "Halo";
 
-            // Aturan Waktu (Bisa disesuaikan)
+          
             if (hour >= 4 && hour < 11) {
                 greeting = "Selamat Pagi";
             } else if (hour >= 11 && hour < 15) {
@@ -133,14 +133,15 @@
                 greeting = "Selamat Malam";
             }
 
-            // Masukkan teks ke dalam HTML
+      
             greetingElement.innerText = greeting;
         }
 
-        // Jalankan fungsi saat halaman selesai dimuat
+ 
         updateGreeting();
 
     </script>
 
 </body>
 </html>
+
