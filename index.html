@@ -2,111 +2,189 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Selamat Datang</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        /* --- RESET & BODY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            
             background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
+            /* justify-content: center;  <-- Dihapus biar bisa scroll kalau konten banyak */
+            padding: 40px 20px;
             color: white;
+            overflow-x: hidden;
         }
 
+        /* --- LOGO SEKOLAH --- */
+        .school-logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
         
+        .school-logo img {
+            width: 80%; /* Kalau ada gambar logo asli, pakai tag img */
+            height: auto;
+        }
+
+        /* --- JUDUL UTAMA --- */
         .welcome-container {
+            text-align: center;
             animation: fadeIn 1.5s ease;
+            margin-bottom: 50px;
+            max-width: 800px;
         }
 
         h1 {
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            line-height: 1.2;
             text-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
-        p {
+        
+        .subtitle {
             font-size: 1.2rem;
             font-weight: 300;
             color: #e0e0e0;
-            margin-bottom: 50px;
+            margin-top: 10px;
+            margin-bottom: 40px;
         }
 
-        
+        /* --- TOMBOL UTAMA --- */
         .btn-start {
             display: inline-block;
-            padding: 20px 60px;
-            font-size: 1.5rem;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #090979;
-            background: white;
+            color: white;
+            background: linear-gradient(45deg, #ff9800, #ff5722);
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.4);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        
         .btn-start:hover {
-            transform: scale(1.1); 
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
-            background: #f0f8ff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 87, 34, 0.6);
         }
 
-        
-        .btn-start {
-            animation: pulse 2s infinite;
+        /* --- FITUR CARDS (YANG BARU) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 20px;
+            animation: slideUp 1s ease 0.5s backwards; /* Muncul belakangan */
         }
 
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
         }
 
-       
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            padding-top: 50px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ANIMASI */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* RESPONSIF HP */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            .btn-start { padding: 15px 40px; font-size: 1.2rem; }
+            .features-grid { grid-template-columns: 1fr; /* Jadi 1 kolom di HP */ }
+            .school-logo { width: 80px; height: 80px; font-size: 30px; }
         }
     </style>
 </head>
 <body>
 
     <div class="welcome-container">
-        <h1>E-LEARNING</h1>
-        <h1>SMK AL-Musaddadiyah</h1>
-        <p>Media Pembelajaran Interaktif</p>
+        <div class="school-logo">
+            <i class="fas fa-graduation-cap"></i> 
+            </div>
 
-        <a href="login-firebase.html" class="btn-start">Login / Daftar</a>
+        <h1>E-LEARNING<br>SMK AL-MUSADDADIYAH</h1>
+        <p class="subtitle">Platform Pembelajaran Interaktif & Modern</p>
+
+        <a href="login-firebase.html" class="btn-start">Mulai Belajar Sekarang 🚀</a>
     </div>
 
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+            <div class="feature-title">Materi Lengkap</div>
+            <div class="feature-desc">Pelajari modul dampak sosial informatika dengan mudah.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-play-circle"></i></div>
+            <div class="feature-title">Video Interaktif</div>
+            <div class="feature-desc">Tonton video pembelajaran agar lebih paham.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+            <div class="feature-title">Quiz & Peringkat</div>
+            <div class="feature-desc">Uji kemampuanmu dan raih peringkat tertinggi!</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Mahasiswa PTI IPI Garut • Sendy, Iis, Tia
+    </footer>
+
 </body>
-
 </html>
-
