@@ -64,7 +64,18 @@
             position: relative;
         }
 
-       
+       /* BAGIAN TEKS (SAPAAN) */
+        .hero-text { flex: 1; animation: slideIn 0.8s ease; }
+        
+        h1 {
+            font-size: 2.8rem; line-height: 1.2; margin-bottom: 10px; font-weight: 700;
+        }
+        .highlight { color: #00d4ff; }
+        
+        p.subtitle {
+            font-size: 1rem; color: #e0e0e0; margin-bottom: 30px; 
+            font-weight: 300; line-height: 1.6; max-width: 90%;
+        }
         .decoration-circle {
             position: absolute;
             width: 300px;
@@ -152,11 +163,15 @@
     <main class="hero-container">
         <div class="decoration-circle"></div>
 
-        <h1 class="fade-in">
-            Haloo<br>
-            Mari Kita Belajar<br>
-            Bersama
-        </h1>
+        <div class="container">
+        
+        <div class="hero-text">
+            <h1>Halo,<br><span class="highlight">Sang Juara!</span> 👋</h1>
+            <p class="subtitle">
+                Jangan lupa lanjutkan materi belajarmu hari ini. Sedikit demi sedikit lama-lama menjadi bukit.
+            </p>
+        </div>
+
 
         <div class="bottom-section fade-in" style="animation-delay: 0.3s;">
             <p class="sub-text">Pahami materi dulu yuk</p>
@@ -173,3 +188,4 @@
 </body>
 
 </html>
+
