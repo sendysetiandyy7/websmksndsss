@@ -6,21 +6,20 @@
     <title>Quiz Evaluasi</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
-        /* --- GLOBAL STYLE --- */
+    
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body {
-            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
-            color: white; min-height: 100vh; display: flex; flex-direction: column;
-        }
+        body { background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%); color: white; min-height: 100vh; display: flex; flex-direction: column; }
         nav { padding: 20px 30px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; }
         .logo { font-weight: 700; font-size: 1.2rem; color: white; text-decoration: none; }
         .quiz-container { max-width: 700px; margin: 30px auto; padding: 20px; width: 100%; }
         h2 { text-align: center; margin-bottom: 20px; font-weight: 700; }
         p.sub-title { text-align: center; margin-bottom: 40px; color: #e0e0e0; font-size: 0.9rem; }
         
-        /* KARTU SOAL */
+      
         .question-card { background: white; color: #333; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; }
         .option-group { display: flex; flex-direction: column; gap: 10px; }
@@ -28,7 +27,7 @@
         .option-label:hover { background-color: #f0f8ff; border-color: #090979; }
         input[type="radio"] { margin-right: 15px; transform: scale(1.2); cursor: pointer; }
 
-        /* TOMBOL SUBMIT */
+       
         .btn-submit { display: block; width: 100%; padding: 15px; background: #ff9800; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4); transition: 0.3s; margin-top: 20px; }
         .btn-submit:hover { background: #e68900; transform: translateY(-2px); }
 
@@ -36,13 +35,15 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .modal-box { background: white; color: #333; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; animation: popUp 0.4s ease; }
         .score-display { font-size: 3rem; font-weight: 800; margin: 15px 0; color: #090979; }
-        .result-message { margin-bottom: 20px; font-size: 1rem; color: #555; }
+        .result-message { margin-bottom: 20px; font-size: 1rem; color: #555; line-height: 1.5; }
         
         /* Tombol di dalam Modal */
-        .modal-btn { display: inline-block; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; color: white; margin-top: 10px; width: 100%; border: none; cursor: pointer; font-size: 1rem; }
-        .btn-success { background: #00c853; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4); }
-        .btn-fail { background: #d50000; box-shadow: 0 4px 10px rgba(213, 0, 0, 0.4); }
-        .btn-blue { background: #2196f3; box-shadow: 0 4px 10px rgba(33, 150, 243, 0.4); }
+        .modal-btn { display: inline-block; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; color: white; margin-top: 10px; width: 100%; border: none; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+        .modal-btn:hover { transform: translateY(-2px); }
+        
+        .btn-fail { background: #d50000; }
+        .btn-blue { background: #2196f3; }
+        .btn-purple { background: #9c27b0; color: white; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4); }
 
         @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
@@ -58,14 +59,13 @@
         <p class="sub-title">Jawablah 10 pertanyaan berikut. KKM: 70</p>
 
         <form id="quizForm">
-            
             <div class="question-card">
                 <p class="question-text">1. Dampak sosial informatika adalah …</p>
                 <div class="option-group">
-                    <label class="option-label"><input type="radio" name="q1" value="A"> A. Pengaruh teknologi pada ekonomi</label>
-                    <label class="option-label"><input type="radio" name="q1" value="B"> B. Pengaruh teknologi terhadap perilaku manusia</label>
-                    <label class="option-label"><input type="radio" name="q1" value="C"> C. Membuat aplikasi digital</label>
-                    <label class="option-label"><input type="radio" name="q1" value="D"> D. Membuat medsos</label>
+                    <label class="option-label"><input type="radio" name="q1" value="A"> A. Pengaruh teknologi pada perkembangan ekonomi negara</label>
+                    <label class="option-label"><input type="radio" name="q1" value="B"> B. Pengaruh teknologi terhadap perilaku, interaksi, dan kebiasaan manusia</label>
+                    <label class="option-label"><input type="radio" name="q1" value="C"> C. Penggunaan teknologi untuk membuat aplikasi digital</label>
+                    <label class="option-label"><input type="radio" name="q1" value="D"> D. Cara membuat media sosial yang menarik</label>
                 </div>
             </div>
 
@@ -104,8 +104,8 @@
                 <div class="option-group">
                     <label class="option-label"><input type="radio" name="q5" value="A"> A. Membantu siswa bermain game lebih cepat</label>
                     <label class="option-label"><input type="radio" name="q5" value="B"> B. Membuat siswa bisa mengganti password setiap hari</label>
-                    <label class="option-label"><input type="radio" name="q5" value="C"> C. Membantu memahami cara aman menggunakan teknologi</label>
-                    <label class="option-label"><input type="radio" name="q5" value="D"> D. Membuat siswa semakin sering akses medsos</label>
+                    <label class="option-label"><input type="radio" name="q5" value="C"> C. Membantu memahami cara aman menggunakan teknologi dan membedakan fakta dengan hoaks</label>
+                    <label class="option-label"><input type="radio" name="q5" value="D"> D. Membuat siswa semakin sering mengakses media sosial</label>
                 </div>
             </div>
 
@@ -124,7 +124,7 @@
                 <div class="option-group">
                     <label class="option-label"><input type="radio" name="q7" value="A"> A. Mengaktifkan notifikasi semua aplikasi</label>
                     <label class="option-label"><input type="radio" name="q7" value="B"> B. Bermain HP saat belajar agar tidak bosan</label>
-                    <label class="option-label"><input type="radio" name="q7" value="C"> C. Menggunakan fitur Digital Well-Being</label>
+                    <label class="option-label"><input type="radio" name="q7" value="C"> C. Menggunakan fitur Digital Well-Being untuk membatasi waktu</label>
                     <label class="option-label"><input type="radio" name="q7" value="D"> D. Membuka media sosial sebelum tidur</label>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                 <div class="option-group">
                     <label class="option-label"><input type="radio" name="q8" value="A"> A. Menyebarkan screenshot chat pribadi</label>
                     <label class="option-label"><input type="radio" name="q8" value="B"> B. Menghina orang lain secara online</label>
-                    <label class="option-label"><input type="radio" name="q8" value="C"> C. Tidak menyebarkan informasi hoaks</label>
+                    <label class="option-label"><input type="radio" name="q8" value="C"> C. Tidak menyebarkan informasi yang belum pasti benar</label>
                     <label class="option-label"><input type="radio" name="q8" value="D"> D. Mengunggah semua aktivitas pribadi</label>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                 <div class="option-group">
                     <label class="option-label"><input type="radio" name="q9" value="A"> A. Karena HP bisa membuat makanan cepat dingin</label>
                     <label class="option-label"><input type="radio" name="q9" value="B"> B. HP membuat siswa terlihat sombong</label>
-                    <label class="option-label"><input type="radio" name="q9" value="C"> C. HP dapat mengganggu fokus dan interaksi</label>
+                    <label class="option-label"><input type="radio" name="q9" value="C"> C. HP dapat mengganggu fokus dan mengurangi interaksi</label>
                     <label class="option-label"><input type="radio" name="q9" value="D"> D. HP hanya digunakan oleh orang dewasa</label>
                 </div>
             </div>
@@ -170,13 +170,16 @@
             <p class="result-message" id="resultMessage">Pesan akan muncul disini</p>
             
             <div id="saveArea" style="display: none; margin-top: 20px;">
-                <input type="text" id="inputNama" placeholder="Masukkan Nama Lengkap" 
-                       style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
+                <p style="font-size: 0.9rem; margin-bottom: 5px; color: #666;">Tulis namamu untuk kenang-kenangan:</p>
+                <input type="text" id="inputNama" placeholder="Nama Panggilan / Lengkap" 
+                       style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 10px; text-align: center;">
                 
-                <button id="btnSave" onclick="simpanKeFirebase()" class="modal-btn btn-blue">🏆 Simpan & Lihat Leaderboard</button>
+                <button onclick="cetakUcapan()" class="modal-btn btn-purple">📄 Download Kartu Apresiasi</button>
+                
+                <button id="btnSave" onclick="simpanKeFirebase()" class="modal-btn btn-blue">🏆 Lihat Leaderboard</button>
             </div>
 
-            <a href="#" id="actionBtn" class="modal-btn" style="display: none;">Tombol Aksi</a>
+            <a href="Utama.html" id="actionBtn" class="modal-btn" style="display: none;">Tombol Aksi</a>
         </div>
     </div>
 
@@ -185,7 +188,6 @@
         import { getFirestore, collection, addDoc, serverTimestamp } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // 🔥🔥 PASTE CONFIG FIREBASE KAMU DI BAWAH INI 🔥🔥
         const firebaseConfig = {
             apiKey: "AIzaSyCvlai-CR39S_Z2s4rUhJcVX2Di3IgDZYg",
             authDomain: "websmk-saya.firebaseapp.com",
@@ -198,10 +200,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Variabel Global
         window.finalScoreGlobal = 0;
 
-        // Fungsi Cek Hasil
         window.checkResult = function() {
             const correctAnswers = { q1: 'B', q2: 'C', q3: 'B', q4: 'C', q5: 'C', q6: 'B', q7: 'C', q8: 'C', q9: 'C', q10: 'B' };
             let score = 0;
@@ -216,7 +216,6 @@
             let finalScore = Math.round((score / totalQuestions) * 100);
             window.finalScoreGlobal = finalScore;
 
-            // Tampilkan Modal
             let modal = document.getElementById('resultModal');
             let scoreText = document.getElementById('scoreValue');
             let msgText = document.getElementById('resultMessage');
@@ -227,39 +226,29 @@
             scoreText.innerText = finalScore;
             modal.style.display = 'flex';
 
-            // LOGIKA KKM 70
             if (finalScore >= 70) {
-                // LULUS -> Tampilkan Input Nama & Tombol Leaderboard
-                title.innerText = "🎉 Luar Biasa!";
+                title.innerText = "🎉 Hebat!";
                 title.style.color = "#00c853";
-                msgText.innerText = "Selamat! Kamu Lulus. Masukkan nama untuk masuk Leaderboard.";
-                
-                saveArea.style.display = 'block'; // Munculkan Area Simpan
-                actionBtn.style.display = 'none'; // Sembunyikan tombol lain
+                msgText.innerHTML = "Usaha tidak mengkhianati hasil.<br>Terima kasih sudah belajar dengan giat!";
+                saveArea.style.display = 'block';
+                actionBtn.style.display = 'none';
             } else {
-                // GAGAL -> Sembunyikan Leaderboard, Paksa Baca Materi Lagi
-                title.innerText = "⚠️ Belum Lulus";
+                title.innerText = "⚠️ Jangan Menyerah";
                 title.style.color = "#d50000";
-                msgText.innerText = "Nilai belum cukup (Min. 70). Baca materi lagi ya!";
-                
-                saveArea.style.display = 'none'; // Sembunyikan Area Simpan
-                
+                msgText.innerText = "Nilai belum mencukupi. Coba baca materi lagi, pasti bisa!";
+                saveArea.style.display = 'none';
                 actionBtn.style.display = 'inline-block';
                 actionBtn.innerText = "📖 Baca Materi Lagi";
                 actionBtn.className = "modal-btn btn-fail";
-                actionBtn.href = "materi.html";
+                actionBtn.href = "isi_materi.html";
             }
         }
 
-        // Fungsi Simpan ke Firebase
         window.simpanKeFirebase = async function() {
             const nama = document.getElementById('inputNama').value;
             const btnSave = document.getElementById('btnSave');
 
-            if(nama.trim() == "") {
-                alert("Mohon isi nama kamu dulu!");
-                return;
-            }
+            if(nama.trim() == "") { alert("Ketik nama dulu ya!"); return; }
 
             btnSave.innerText = "Menyimpan...";
             btnSave.disabled = true;
@@ -270,14 +259,101 @@
                     nilai: window.finalScoreGlobal,
                     waktu: serverTimestamp()
                 });
-                
-                // Redirect ke Leaderboard
                 window.location.href = "leaderboard.html"; 
             } catch (e) {
-                alert("Gagal menyimpan: " + e.message);
-                btnSave.innerText = "Coba Lagi";
+                alert("Gagal: " + e.message);
                 btnSave.disabled = false;
             }
+        }
+
+        
+        window.cetakUcapan = function() {
+            const nama = document.getElementById('inputNama').value;
+            
+            if(nama.trim() == "") {
+                alert("Mohon isi nama kamu dulu!");
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a5" });
+            const width = 210;
+            const height = 148;
+
+            
+            doc.setFillColor(252, 248, 232); 
+            doc.rect(0, 0, width, height, 'F');
+
+            
+            doc.setFillColor(9, 9, 121); 
+            doc.rect(0, 0, width, 25, 'F');
+
+           
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(16);
+            doc.text("PIAGAM PENGHARGAAN", width / 2, 16, { align: "center" });
+
+           
+            doc.setFillColor(212, 175, 55); 
+            doc.triangle(0, 25, 20, 25, 0, 45, 'F'); 
+            doc.triangle(width, 25, width-20, 25, width, 45, 'F'); 
+
+          
+            doc.setTextColor(60, 60, 60);
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "normal");
+            doc.text("Diberikan dengan bangga kepada:", width / 2, 45, { align: "center" });
+
+          
+            doc.setFont("times", "bolditalic");
+            doc.setTextColor(9, 9, 121); 
+            doc.setFontSize(32);
+            doc.text(nama, width / 2, 65, { align: "center" });
+
+           
+            doc.setDrawColor(212, 175, 55);
+            doc.setLineWidth(0.5);
+            doc.line(50, 70, 160, 70);
+
+
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(50, 50, 50);
+            doc.setFontSize(11);
+            doc.text("Atas keberhasilannya menyelesaikan seluruh materi pembelajaran", width / 2, 85, { align: "center" });
+            doc.text("Dampak Sosial Informatika dengan hasil yang SANGAT BAIK.", width / 2, 91, { align: "center" });
+
+           
+            doc.setFillColor(9, 9, 121);
+            doc.circle(180, 70, 12, 'F'); 
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(14);
+            doc.text(`${window.finalScoreGlobal}`, 180, 72, { align: "center" }); 
+            doc.setFontSize(7);
+            doc.text("POIN", 180, 77, { align: "center" });
+
+            // Footer Abu-abu
+            doc.setFillColor(230, 230, 230);
+            doc.rect(0, 118, width, 30, 'F');
+
+            // Credits
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(80, 80, 80);
+            doc.setFontSize(9);
+            doc.text("Dikembangkan oleh:", width / 2, 125, { align: "center" });
+
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(9, 9, 121);
+            doc.setFontSize(10);
+            doc.text("Mahasiswa Pendidikan Teknologi Informasi - IPI Garut", width / 2, 132, { align: "center" });
+
+            doc.setFont("times", "italic");
+            doc.setTextColor(50, 50, 50);
+            doc.setFontSize(10);
+            doc.text("Sendy Setiandy  •  Iis Nabila  •  Tia Dahlia", width / 2, 140, { align: "center" });
+
+            doc.save(`Piagam_${nama}.pdf`);
         }
     </script>
 
