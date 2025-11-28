@@ -18,6 +18,7 @@
             display: flex; flex-direction: column; overflow: hidden;
         }
 
+      
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 30px;
@@ -28,6 +29,7 @@
         .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
         .menu-icon { font-size: 1.8rem; cursor: pointer; color: white; }
 
+    
         .hero-container {
             flex: 1; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
@@ -54,6 +56,7 @@
             font-weight: 300;
         }
 
+   
         .btn-lanjut {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
@@ -70,6 +73,7 @@
             box-shadow: 0 8px 20px rgba(255,255,255,0.3);
         }
 
+    
         .fade-in { animation: fadeInUp 1s ease-out; }
         
         @keyframes fadeInUp {
@@ -86,7 +90,7 @@
 
     <nav>
         <div class="logo">E-Learning SMK</div>
- 
+  
     </nav>
 
     <main class="hero-container">
@@ -100,12 +104,16 @@
         </div>
 
         <div class="bottom-section fade-in" style="animation-delay: 0.3s;">
-
+            <p class="sub-text">Pahami materi dulu yuk</p>
             <a href="halaman 2.html" class="btn-lanjut">Lanjut</a>
         </div>
     </main>
 
-   
+    <script>
+        // 1. Fungsi Navigasi (Placeholder)
+        function toggleMenu() {
+            alert("Menu diklik!");
+        }
 
         // 2. LOGIKA SAPAAN REAL-TIME
         function updateGreeting() {
@@ -136,5 +144,3 @@
 
 </body>
 </html>
-
-
