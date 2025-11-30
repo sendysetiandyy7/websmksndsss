@@ -8,199 +8,99 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        /* --- GLOBAL STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
             background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 50px;
+            display: flex; flex-direction: column; align-items: center; padding-bottom: 50px;
         }
 
-       
+        /* --- NAVBAR --- */
         nav {
-            width: 100%;
-            padding: 20px 30px;
+            width: 100%; padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center;
         }
+        .logo { font-weight: 700; font-size: 1.2rem; color: white; text-decoration: none; }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
-            text-decoration: none;
-        }
-
-       
+        /* --- KOTAK BACAAN --- */
         .content-container {
             background-color: rgba(255, 255, 255, 0.95);
-            width: 90%;
-            max-width: 800px;
-            margin-top: 30px;
-            border-radius: 20px;
-            padding: 40px;
+            width: 90%; max-width: 800px; margin-top: 30px;
+            border-radius: 20px; padding: 40px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: slideUp 0.8s ease;
-            color: #333;
+            animation: slideUp 0.8s ease; color: #333;
         }
 
-       
-        .materi-header {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-
+        /* Header Materi */
+        .materi-header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
         .category-badge {
-            background: #e3f2fd;
-            color: #090979;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            background: #e3f2fd; color: #090979; padding: 5px 15px;
+            border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
         }
+        h1 { margin-top: 10px; color: #090979; font-size: 1.8rem; line-height: 1.3; }
 
-        h1 {
-            margin-top: 10px;
-            color: #090979;
-            font-size: 1.8rem; /* Ukuran disesuaikan agar tidak terlalu besar */
-            line-height: 1.3;
-        }
-
-        
+        /* --- GAMBAR ILUSTRASI (YANG DIUPDATE) --- */
         .materi-image {
             width: 100%;
-            height: 250px;
+            height: 250px; /* Tinggi gambar tetap */
             background-color: #ddd;
             border-radius: 15px;
             margin-bottom: 25px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #777;
-            font-weight: 600;
-            overflow: hidden;
         }
 
         .materi-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Agar gambar full kotak & rapi */
+            object-position: center;
         }
 
-        
-        .materi-body {
-            color: #444;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-     
+        /* --- STYLE ISI MATERI (Typography) --- */
+        .materi-body { color: #444; line-height: 1.8; font-size: 1rem; }
         .materi-body h3 {
-            color: #090979;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-left: 4px solid #00d4ff;
-            padding-left: 10px;
+            color: #090979; margin-top: 30px; margin-bottom: 10px;
+            font-size: 1.3rem; font-weight: 700;
+            border-left: 4px solid #00d4ff; padding-left: 10px;
         }
+        .materi-body p { margin-bottom: 15px; text-align: justify; }
+        .materi-body ol, .materi-body ul { margin-left: 20px; margin-bottom: 20px; padding-left: 15px; }
+        .materi-body li { margin-bottom: 10px; }
+        .materi-body li ul { margin-top: 5px; margin-bottom: 5px; color: #555; }
+        .materi-body strong { color: #000; }
 
-        .materi-body p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-   
-        .materi-body ol, .materi-body ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            padding-left: 15px;
-        }
-
-        .materi-body li {
-            margin-bottom: 10px;
-        }
-
-
-        .materi-body li ul {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .materi-body strong {
-            color: #000;
-        }
-
-      
+        /* Highlight Box */
         .highlight-box {
-            background: #e8f5e9; /* Hijau muda */
-            border-left: 5px solid #4caf50;
-            padding: 15px;
-            margin: 25px 0;
-            border-radius: 5px;
-            font-style: italic;
-            color: #2e7d32;
+            background: #e8f5e9; border-left: 5px solid #4caf50;
+            padding: 15px; margin: 25px 0; border-radius: 5px;
+            font-style: italic; color: #2e7d32;
         }
 
-      
+        /* --- TOMBOL NAVIGASI --- */
         .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            border-top: 2px solid #eee;
-            padding-top: 20px;
+            display: flex; justify-content: space-between; margin-top: 40px;
+            border-top: 2px solid #eee; padding-top: 20px;
         }
-
         .btn {
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
+            text-decoration: none; padding: 12px 25px; border-radius: 50px;
+            font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center;
         }
-
-        .btn-prev {
-            background: white;
-            border: 1px solid #ddd;
-            color: #666;
-        }
+        .btn-prev { background: white; border: 1px solid #ddd; color: #666; }
         .btn-prev:hover { background: #f0f0f0; color: #333; }
+        .btn-next { background: #090979; color: white; box-shadow: 0 4px 15px rgba(9, 9, 121, 0.3); }
+        .btn-next:hover { background: #00d4ff; transform: translateY(-2px); }
 
-        .btn-next {
-            background: #090979;
-            color: white;
-            box-shadow: 0 4px 15px rgba(9, 9, 121, 0.3);
-        }
-        .btn-next:hover {
-            background: #00d4ff;
-            transform: translateY(-2px);
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-       
+        /* Responsif HP */
         @media (max-width: 600px) {
             .content-container { padding: 25px; width: 95%; }
             h1 { font-size: 1.4rem; }
@@ -208,7 +108,6 @@
             .nav-buttons { flex-direction: column-reverse; gap: 10px; }
             .btn { width: 100%; justify-content: center; }
         }
-
     </style>
 </head>
 <body>
@@ -225,7 +124,7 @@
         </div>
 
         <div class="materi-image">
-            <span>[ Ilustrasi Remaja & Gadget ]</span>
+            <img src="Gambar2.jpeg" alt="Ilustrasi Teknologi dan Remaja">
         </div>
 
         <div class="materi-body">
@@ -238,42 +137,28 @@
 
             <h3>B. Dampak Sosial Positif Teknologi</h3>
             <ol>
-                <li><strong>Mempermudah Komunikasi:</strong> Teknologi memungkinkan individu berkomunikasi secara cepat melalui pesan singkat, panggilan video, serta berbagai aplikasi percakapan. Hal ini mendukung kerja sama, koordinasi, serta hubungan dengan teman maupun keluarga yang berada di lokasi berbeda.</li>
-                <li><strong>Memperluas Jejaring Sosial:</strong> Media digital membantu remaja terhubung dalam komunitas berdasarkan minat, seperti musik, desain, pemrograman, atau game. Jejaring ini dapat memberikan kesempatan belajar, kolaborasi, dan berbagi pengalaman.</li>
-                <li><strong>Mendukung Kolaborasi dan Produktivitas:</strong> Aplikasi seperti Google Workspace, Canva, atau platform pembelajaran daring memudahkan siswa mengerjakan tugas atau proyek secara bersama-sama. Pengelolaan pekerjaan juga menjadi lebih efisien karena dokumen dapat diakses kapan saja.</li>
-                <li><strong>Menjadi Ruang Ekspresi Diri:</strong> Teknologi memungkinkan remaja mengekspresikan ide, kreativitas, dan identitas diri melalui foto, video, karya digital, atau tulisan. Hal ini dapat meningkatkan rasa percaya diri dan kemampuan berkarya.</li>
+                <li><strong>Mempermudah Komunikasi:</strong> Teknologi memungkinkan individu berkomunikasi secara cepat melalui pesan singkat, panggilan video, serta berbagai aplikasi percakapan.</li>
+                <li><strong>Memperluas Jejaring Sosial:</strong> Media digital membantu remaja terhubung dalam komunitas berdasarkan minat.</li>
+                <li><strong>Mendukung Kolaborasi:</strong> Aplikasi seperti Google Workspace memudahkan siswa mengerjakan tugas bersama.</li>
+                <li><strong>Menjadi Ruang Ekspresi Diri:</strong> Teknologi memungkinkan remaja mengekspresikan ide dan kreativitas.</li>
             </ol>
 
             <div class="highlight-box">
                 💡 <strong>Tips Digital:</strong> Gunakan teknologi sebagai alat untuk berkarya, bukan hanya sekadar alat untuk melihat karya orang lain.
             </div>
 
-            <h3>C. Dampak Sosial Negatif Teknologi pada Remaja (Gen Z)</h3>
+            <h3>C. Dampak Sosial Negatif Teknologi</h3>
             <ol>
-                <li><strong>Kecanduan Gadget:</strong> Penggunaan gadget tanpa kontrol dapat menyebabkan individu terus-menerus memeriksa ponsel, sulit berkonsentrasi, dan mengabaikan tugas penting. Kecanduan ini berdampak pada:
-                    <ul>
-                        <li>Penurunan fokus belajar</li>
-                        <li>Kurang tidur</li>
-                        <li>Penurunan kedisiplinan</li>
-                    </ul>
-                </li>
-                <li><strong>Menurunnya Interaksi Sosial Langsung:</strong> Remaja cenderung lebih nyaman berkomunikasi melalui pesan digital daripada tatap muka. Akibatnya:
-                    <ul>
-                        <li>Kemampuan komunikasi interpersonal menurun</li>
-                        <li>Interaksi dengan keluarga berkurang</li>
-                        <li>Hubungan sosial menjadi lebih dangkal</li>
-                    </ul>
-                </li>
-                <li><strong>Fenomena FOMO (Fear of Missing Out) dan Perbandingan Sosial:</strong> Media sosial sering menampilkan pencapaian atau kehidupan terbaik seseorang. Melihat hal tersebut secara terus-menerus dapat menimbulkan perasaan kurang percaya diri, kecemasan sosial, dan dorongan untuk selalu “ikut tren”.</li>
-                <li><strong>Potensi Cyberbullying:</strong> Komentar negatif, penyebaran foto tanpa izin, atau penghinaan daring dapat terjadi dengan mudah. Cyberbullying memberikan dampak signifikan terhadap kondisi psikologis remaja.</li>
-                <li><strong>Penyalahgunaan Data dan Privasi:</strong> Kurangnya pengetahuan tentang keamanan digital membuat remaja rentan terhadap kebocoran data, penipuan daring (phishing), dan akses ilegal terhadap akun pribadi.</li>
+                <li><strong>Kecanduan Gadget:</strong> Penurunan fokus belajar, kurang tidur, dan penurunan kedisiplinan.</li>
+                <li><strong>Menurunnya Interaksi Sosial Langsung:</strong> Lebih nyaman chat daripada tatap muka.</li>
+                <li><strong>FOMO (Fear of Missing Out):</strong> Cemas melihat pencapaian orang lain di medsos.</li>
+                <li><strong>Cyberbullying & Privasi:</strong> Rentan terhadap komentar negatif dan kebocoran data.</li>
             </ol>
 
-            <h3>D. Gambaran Situasi Nyata dalam Kehidupan Remaja</h3>
+            <h3>D. Gambaran Situasi Nyata</h3>
             <ol>
-                <li><strong>Di lingkungan sekolah:</strong> Siswa cenderung lebih fokus pada layar ponsel saat jam istirahat. Sehingga diskusi kelompok terhambat karena perhatian terpecah oleh notifikasi.</li>
-                <li><strong>Di lingkungan rumah:</strong> Aktivitas makan sering disertai penggunaan HP. Remaja mengecek ponsel segera setelah bangun tidur. Waktu malam banyak dihabiskan untuk scroll media sosial.</li>
-                <li><strong>Dalam proses belajar:</strong> Penggunaan gadget untuk belajar sering beralih menjadi hiburan. Konsentrasi cepat terganggu oleh notifikasi.</li>
+                <li><strong>Di Sekolah:</strong> Fokus terpecah notifikasi saat diskusi.</li>
+                <li><strong>Di Rumah:</strong> Makan sambil main HP, begadang scroll medsos.</li>
             </ol>
 
         </div>
@@ -285,5 +170,4 @@
     </div>
 
 </body>
-
 </html>

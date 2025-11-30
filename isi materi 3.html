@@ -8,198 +8,98 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-      
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        /* --- GLOBAL STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
             background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 50px;
+            display: flex; flex-direction: column; align-items: center; padding-bottom: 50px;
         }
 
-        
+        /* --- NAVBAR --- */
         nav {
-            width: 100%;
-            padding: 20px 30px;
+            width: 100%; padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center;
         }
+        .logo { font-weight: 700; font-size: 1.2rem; color: white; text-decoration: none; }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
-            text-decoration: none;
-        }
-
-       
+        /* --- KOTAK BACAAN --- */
         .content-container {
             background-color: rgba(255, 255, 255, 0.95);
-            width: 90%;
-            max-width: 800px;
-            margin-top: 30px;
-            border-radius: 20px;
-            padding: 40px;
+            width: 90%; max-width: 800px; margin-top: 30px;
+            border-radius: 20px; padding: 40px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: slideUp 0.8s ease;
-            color: #333;
+            animation: slideUp 0.8s ease; color: #333;
         }
 
-      
-        .materi-header {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-
+        /* Header Materi */
+        .materi-header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
         .category-badge {
-            background: #e3f2fd;
-            color: #090979;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            background: #e3f2fd; color: #090979; padding: 5px 15px;
+            border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
         }
+        h1 { margin-top: 10px; color: #090979; font-size: 1.8rem; line-height: 1.3; }
 
-        h1 {
-            margin-top: 10px;
-            color: #090979;
-            font-size: 1.8rem;
-            line-height: 1.3;
-        }
-
-       
+        /* --- GAMBAR ILUSTRASI (SUDAH DIPERBAIKI) --- */
         .materi-image {
             width: 100%;
-            height: 250px;
+            height: 250px; 
             background-color: #ddd;
             border-radius: 15px;
             margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-weight: 600;
             overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
         }
 
         .materi-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Kunci agar gambar full tanpa gepeng */
+            object-position: center;
         }
 
-  
-        .materi-body {
-            color: #444;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
+        /* --- STYLE ISI MATERI --- */
+        .materi-body { color: #444; line-height: 1.8; font-size: 1rem; }
         .materi-body h3 {
-            color: #090979;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-left: 4px solid #00d4ff;
-            padding-left: 10px;
+            color: #090979; margin-top: 30px; margin-bottom: 10px;
+            font-size: 1.3rem; font-weight: 700;
+            border-left: 4px solid #00d4ff; padding-left: 10px;
         }
+        .materi-body p { margin-bottom: 15px; text-align: justify; }
+        .materi-body ol, .materi-body ul { margin-left: 20px; margin-bottom: 20px; padding-left: 5px; }
+        .materi-body li { margin-bottom: 8px; }
+        .materi-body li ul { margin-top: 5px; margin-bottom: 15px; color: #555; list-style-type: disc; }
+        .materi-body strong { color: #000; }
 
-        .materi-body p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* List Styling */
-        .materi-body ol, .materi-body ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            padding-left: 5px;
-        }
-
-        .materi-body li {
-            margin-bottom: 8px;
-        }
-
-        .materi-body li ul {
-            margin-top: 5px;
-            margin-bottom: 15px;
-            color: #555;
-            list-style-type: disc; 
-        }
-
-        .materi-body strong {
-            color: #000;
-        }
-
-      
+        /* Highlight Box */
         .highlight-box {
-            background: #e3f2fd; /* Biru muda */
-            border-left: 5px solid #2196f3;
-            padding: 15px;
-            margin: 25px 0;
-            border-radius: 5px;
-            font-style: italic;
-            color: #0d47a1;
+            background: #e3f2fd; border-left: 5px solid #2196f3;
+            padding: 15px; margin: 25px 0; border-radius: 5px;
+            font-style: italic; color: #0d47a1;
         }
 
-      
+        /* --- TOMBOL NAVIGASI --- */
         .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            border-top: 2px solid #eee;
-            padding-top: 20px;
+            display: flex; justify-content: space-between; margin-top: 40px;
+            border-top: 2px solid #eee; padding-top: 20px;
         }
-
         .btn {
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
+            text-decoration: none; padding: 12px 25px; border-radius: 50px;
+            font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; cursor: pointer;
         }
-
-        .btn-prev {
-            background: white;
-            border: 1px solid #ddd;
-            color: #666;
-        }
+        .btn-prev { background: white; border: 1px solid #ddd; color: #666; }
         .btn-prev:hover { background: #f0f0f0; color: #333; }
+        
+        .btn-next { background: #090979; color: white; border: none; box-shadow: 0 4px 15px rgba(9, 9, 121, 0.3); }
+        .btn-next:hover { background: #00d4ff; transform: translateY(-2px); }
 
-        .btn-next {
-            background: #090979;
-            color: white;
-            box-shadow: 0 4px 15px rgba(9, 9, 121, 0.3);
-        }
-        .btn-next:hover {
-            background: #00d4ff;
-            transform: translateY(-2px);
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-       
+        /* Responsif HP */
         @media (max-width: 600px) {
             .content-container { padding: 25px; width: 95%; }
             h1 { font-size: 1.4rem; }
@@ -207,7 +107,6 @@
             .nav-buttons { flex-direction: column-reverse; gap: 10px; }
             .btn { width: 100%; justify-content: center; }
         }
-
     </style>
 </head>
 <body>
@@ -224,14 +123,15 @@
         </div>
 
         <div class="materi-image">
-            <span>[ Ilustrasi Digital Well-being ]</span>
+            <img src="Gambar4.jpeg" alt="Ilustrasi Digital Well-being">
         </div>
 
         <div class="materi-body">
             
             <h3>A. Pendahuluan</h3>
             <p>
-                Setelah memahami dampak positif dan negatif teknologi serta pengaruhnya terhadap kehidupan sosial remaja, peserta didik perlu mengembangkan strategi untuk menggunakan teknologi secara lebih sehat, seimbang, dan bertanggung jawab. Bagian ini membahas cara mengontrol penggunaan gadget, mengelola waktu, dan menciptakan kebiasaan digital yang lebih baik.
+                Setelah memahami dampak positif dan negatif teknologi, peserta didik perlu mengembangkan strategi untuk menggunakan teknologi secara lebih sehat. 
+                Bagian ini membahas cara mengontrol penggunaan gadget dan menciptakan kebiasaan digital yang lebih baik.
             </p>
 
             <h3>B. Konsep Penggunaan Teknologi yang Bijak</h3>
@@ -240,111 +140,53 @@
                 <li>Mengontrol waktu dan durasi penggunaan gadget.</li>
                 <li>Memilih informasi dan konten yang bermanfaat.</li>
                 <li>Menjaga etika dalam berinteraksi digital.</li>
-                <li>Mengutamakan kesehatan fisik, mental, serta hubungan sosial.</li>
             </ol>
 
             <div class="highlight-box">
                 💡 <strong>Tips:</strong> Digital Well-being bukan berarti berhenti menggunakan gadget, tapi mengendalikannya agar hidup lebih seimbang.
             </div>
 
-            <h3>C. Strategi Mengatur Penggunaan Gadget (Digital Well-Being)</h3>
+            <h3>C. Strategi Digital Well-Being</h3>
             <ol>
-                <li><strong>Membuat Batasan Waktu (Screen Time Control)</strong>
-                    <ul>
-                        <li>Tentukan durasi harian untuk aplikasi tertentu (misal media sosial 1–2 jam per hari).</li>
-                        <li>Gunakan fitur <em>screen time</em> atau <em>digital well-being</em> di HP.</li>
-                        <li>Prioritaskan aplikasi pendidikan sebelum hiburan.</li>
-                    </ul>
-                </li>
-                <li><strong>Menghindari Penggunaan Gadget Saat Moment Penting</strong>
-                    <ul>
-                        <li>Tidak menggunakan HP saat belajar, makan, atau berkumpul dengan keluarga.</li>
-                        <li>Hindari penggunaan gadget sebelum tidur untuk menjaga kualitas istirahat.</li>
-                    </ul>
-                </li>
-                <li><strong>Mengaktifkan Mode Fokus</strong>
-                    <ul>
-                        <li>Gunakan fitur “Do Not Disturb” selama belajar.</li>
-                        <li>Matikan notifikasi yang tidak penting.</li>
-                        <li>Buat jadwal fokus 25–30 menit tanpa gangguan.</li>
-                    </ul>
-                </li>
+                <li><strong>Screen Time Control:</strong> Tentukan durasi harian untuk media sosial.</li>
+                <li><strong>Hindari Gadget di Momen Penting:</strong> Saat makan atau berkumpul keluarga.</li>
+                <li><strong>Mode Fokus:</strong> Matikan notifikasi saat belajar.</li>
             </ol>
 
-            <h3>D. Menjaga Etika dan Keamanan Digital</h3>
+            <h3>D. Menjaga Etika & Keamanan</h3>
             <ol>
-                <li><strong>Etika Berkomunikasi</strong>
-                    <ul>
-                        <li>Menjaga sopan santun saat mengirim pesan.</li>
-                        <li>Menghindari komentar kasar, menyindir, atau merendahkan orang lain.</li>
-                        <li>Tidak menyebarkan pesan yang belum jelas kebenarannya.</li>
-                    </ul>
-                </li>
-                <li><strong>Keamanan Data Pribadi</strong>
-                    <ul>
-                        <li>Menggunakan password yang kuat.</li>
-                        <li>Tidak membagikan identitas pribadi di media sosial.</li>
-                        <li>Berhati-hati saat mengklik tautan atau mengunduh file.</li>
-                    </ul>
-                </li>
-                <li><strong>Bijak dalam Bermedia Sosial</strong>
-                    <ul>
-                        <li>Memilah konten sebelum dibagikan.</li>
-                        <li>Menjaga privasi akun.</li>
-                        <li>Menghindari posting impulsif yang dapat disalahpahami orang lain.</li>
-                    </ul>
-                </li>
+                <li><strong>Etika:</strong> Sopan santun, hindari komentar kasar.</li>
+                <li><strong>Keamanan:</strong> Gunakan password kuat, jangan sebar data pribadi.</li>
             </ol>
 
-            <h3>E. Strategi Mengatasi Kecanduan Gadget</h3>
-            <ol>
-                <li><strong>Pola Aktivitas Seimbang</strong>
-                    <ul>
-                        <li>Menambah kegiatan fisik seperti olahraga atau hobi.</li>
-                        <li>Menjaga keseimbangan antara aktivitas digital dan aktivitas nyata.</li>
-                    </ul>
-                </li>
-                <li><strong>Mengatur Lingkungan Belajar</strong>
-                    <ul>
-                        <li>Tempat belajar harus bebas distraksi gadget.</li>
-                        <li>Sediakan buku, pulpen, dan materi belajar agar tidak bergantung pada HP.</li>
-                    </ul>
-                </li>
-                <li><strong>Menetapkan Waktu “Digital Break”</strong>
-                    <ul>
-                        <li>Istirahat dari layar setiap 1 jam.</li>
-                        <li>Melakukan aktivitas tanpa gadget minimal 2–3 jam per hari.</li>
-                    </ul>
-                </li>
-            </ol>
-
-            <h3>F. Meningkatkan Kemampuan Literasi Digital</h3>
-            <p>Literasi digital membantu siswa memahami:</p>
+            <h3>E. Mengatasi Kecanduan</h3>
             <ul>
-                <li>Cara menggunakan teknologi secara aman.</li>
-                <li>Cara membedakan informasi palsu dengan fakta.</li>
-                <li>Cara mengelola konten digital secara bertanggung jawab.</li>
-            </ul>
-            <p>Kemampuan ini sangat penting agar siswa tidak mudah terpengaruh oleh informasi negatif di internet.</p>
-
-            <h3>G. Membangun Hubungan Sosial yang Sehat</h3>
-            <p>Teknologi tidak boleh menggantikan interaksi langsung. Strategi yang dapat dilakukan:</p>
-            <ul>
-                <li>Meluangkan waktu untuk berbicara langsung dengan keluarga/teman.</li>
-                <li>Mengurangi penggunaan HP saat berada di lingkungan sosial.</li>
-                <li>Melatih kemampuan komunikasi tatap muka.</li>
+                <li>Perbanyak olahraga atau hobi fisik.</li>
+                <li>Tetapkan "Digital Break" (istirahat dari layar).</li>
             </ul>
 
         </div>
 
         <div class="nav-buttons">
-            <a href="materi.html" class="btn btn-prev">← Kembali</a>
+            <a href="halaman 2.html" class="btn btn-prev">← Kembali Menu</a>
 
-            <a href="quiz.html" class="btn btn-next">Lanjut Quiz →</a>
+            <button onclick="selesaikanMateri3()" class="btn btn-next">Selesai & Buka Quiz →</button>
         </div>
 
     </div>
 
-</body>
+    <script>
+        function selesaikanMateri3() {
+            // Simpan status Materi 3 Selesai
+            localStorage.setItem('status_materi_3', 'true');
 
+            // Beri notifikasi
+            alert("Selamat! Semua materi telah selesai.\n\nKUIS SEKARANG SUDAH TERBUKA! 🔓");
+
+            // Arahkan kembali ke Dashboard (Menu Utama)
+            window.location.href = "halaman 2.html"; 
+        }
+    </script>
+
+</body>
 </html>
